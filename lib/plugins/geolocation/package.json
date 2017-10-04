@@ -1,0 +1,13 @@
+{
+    "name": "geolocation",
+    "version": "0.0.1",
+    "main": "geolocation.js",
+    "private": true,
+    "dependencies": {
+      "@google/maps": "^0.4.3"
+    },
+    "plugin": {
+        "consumes": [],
+        "provides": ["geolocation"]
+    }
+}
