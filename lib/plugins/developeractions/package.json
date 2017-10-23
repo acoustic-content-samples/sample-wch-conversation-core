@@ -1,7 +1,7 @@
 {
-    "name": "toneanalyzer",
+    "name": "developeractions",
     "version": "0.0.1",
-    "main": "toneanalyzer.js",
+    "main": "developeractions.js",
     "private": true,
     "dependencies": {
       "debug": "^3.1.0",
@@ -9,6 +9,6 @@
     },
     "plugin": {
         "consumes": [],
-        "provides": ["toneanalyzer", "toneanalyzerMiddleware"]
+        "provides": ["developeractions", "developeractionsMiddleware"]
     }
 }
