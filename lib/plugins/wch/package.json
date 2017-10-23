@@ -1,0 +1,14 @@
+{
+    "name": "wch",
+    "version": "0.0.1",
+    "main": "wch.js",
+    "private": true,
+    "dependencies": {
+      "debug": "^3.1.0",
+      "sample-wch-node-connector": "^0.7.2"
+    },
+    "plugin": {
+        "consumes": [],
+        "provides": ["wch"]
+    }
+}
