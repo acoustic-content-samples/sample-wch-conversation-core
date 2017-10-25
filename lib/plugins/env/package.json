@@ -1,0 +1,14 @@
+{
+    "name": "env",
+    "version": "0.0.1",
+    "main": "env.js",
+    "private": true,
+    "dependencies": {
+      "debug": "^3.1.0",
+      "cfenv": "^1.0.4"
+    },
+    "plugin": {
+        "consumes": ["credentials"],
+        "provides": ["env"]
+    }
+}
