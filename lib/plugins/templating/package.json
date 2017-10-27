@@ -1,0 +1,13 @@
+{
+    "name": "templating",
+    "version": "0.0.1",
+    "main": "templating.js",
+    "private": true,
+    "dependencies": {
+      "debug": "^3.1.0"
+    },
+    "plugin": {
+        "consumes": [],
+        "provides": ["templating"]
+    }
+}
