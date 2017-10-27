@@ -8,7 +8,7 @@
       "sample-wch-node-connector": "^0.7.2"
     },
     "plugin": {
-        "consumes": [],
+        "consumes": ["env"],
         "provides": ["wch"]
     }
 }

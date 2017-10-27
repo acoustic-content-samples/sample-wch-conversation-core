@@ -16,6 +16,7 @@
     "botkit-middleware-watson": "^1.5.0",
     "cfenv": "^1.0.4",
     "debug": "^3.1.0",
+    "handlebars": "^4.0.11",
     "node-rsa": "^0.4.2",
     "sample-wch-node-connector": "^0.7.2",
     "watson-developer-cloud": "^2.39.2"
