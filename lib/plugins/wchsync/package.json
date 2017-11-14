@@ -1,0 +1,13 @@
+{
+    "name": "wchsync",
+    "version": "0.0.1",
+    "main": "wchsync.js",
+    "private": true,
+    "dependencies": {
+      "watson-developer-cloud": "^2.39.2"
+    },
+    "plugin": {
+        "consumes": ["conversation", "wch"],
+        "provides": ["wchsync"]
+    }
+}
