@@ -8,7 +8,7 @@
       "watson-developer-cloud": "^2.39.2"
     },
     "plugin": {
-        "consumes": [],
+        "consumes": ["wchsync"],
         "provides": ["developeractions", "developeractionsMiddleware"]
     }
 }
