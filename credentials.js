@@ -17,6 +17,39 @@
 
 'use strict';
 
+// then(() => {
+//     if(program.sampleSetup) {
+//         console.log(`
+// ############################
+//   Setup Sample
+// ############################
+// `      );
+//       console.log('Note: This might take a while. So sit back and relax :)');
+//       let child = exec(`node ${path.join(__dirname, 'sampledata', 'samplesetup.js')} init --all`);
+
+//       child.stdout.on('data', function (data) {
+//         console.log('stdout: ' + data);
+//       });
+
+//       child.stderr.on('data', function (data) {
+//        console.log('stderr: ' + data);
+//       });
+
+//       child.on('close', function (code) {
+//         console.log('All done :)');
+//         console.log('Have fun and goodbye!');
+//         console.log('Exit Code: ', code);
+//         process.exit(0);
+//       });
+
+//     } else {
+//       console.log('All done :)');
+//       console.log('Have fun and goodbye!');
+//       process.exit(0);
+//     }
+//   }).
+//   catch(errLogger);
+
 /** Node Based Setup Script */
 
 const fs = require('fs');
@@ -28,7 +61,7 @@ const prompt = require('prompt');
 const homedir = require('os').homedir;
 const cwd = process.cwd;
 
-const credentials = require('./lib/plugins/credentials');
+const credentials = require('wch-conversation-core/lib/plugins/credentials');
 
 const settingsPath = path.join(cwd(), 'app_settings.json');
 
@@ -40,16 +73,8 @@ program
   .option('-k, --key [privateKey]', 'Path to private RSA key', path.join(homedir(), '.ssh', 'id_rsa'))
   .option('-S, --sample-setup', 'Trigger sample creation after credentials setup');
 
-program.on('--help', function(){
-  console.log('  Examples:');
-  console.log('');
-  console.log('    $ node ./setup.js -h');
-  console.log('    $ node ./setup.js init');
-  console.log('');
-});
-
 program
- .command('manageCredentials')
+ .command('manage')
  .description('Create or update the given credentials to run the app locally. Will update your app settings based on your decisions.')
  .action(() => {
     checkForAppSettings(path.resolve(program.appSettings))
@@ -61,20 +86,28 @@ program
     .then(setupToneAnalyzer)
     .then(setupLanguageTranslator)
     .then(setupGeolocation)
+    .then(setupMongoDb)
+    .then(setupSlack)
+    .then(setupAlexa)
+    .then(setupFB)
     .then(() => {
-      console.log('All done. Enjoy ;)');
-    }))
+      console.log('\n\n');
+      console.log('<<<<<<<<<<<<<<<<<<<<<<');
+      console.log('| All done. Enjoy ;) |');
+      console.log('>>>>>>>>>>>>>>>>>>>>>>');
+      process.exit(0);
+    })
     .catch(console.log);
   });
 
 program.parse(process.argv);
 
-function checkForAppSettings(setPath) {
+function checkForAppSettings (setPath) {
   return new Promise((resolve, reject) => {
     let settingsExist = fs.existsSync(setPath);
     if (settingsExist) {
       let file = fs.readFileSync(setPath);
-      let settings = JSON.parse(file);h
+      let settings = JSON.parse(file);
       resolve({setExist: true, setPath: setPath, appSettings: settings});
     } else {
       resolve({setExist: false, setPath: setPath});
@@ -82,7 +115,7 @@ function checkForAppSettings(setPath) {
   });
 }
 
-function checkForCredentials(parameters) {
+function checkForCredentials (parameters) {
   let {setExist, setPath, appSettings} = parameters;
   return new Promise((resolve, reject) => {
     try {
@@ -103,7 +136,7 @@ function checkForCredentials(parameters) {
   });
 }
 
-function initGeneralSettings(parameters) {
+function initGeneralSettings (parameters) {
   let {setExist, setPath, appSettings} = parameters;
   return new Promise((resolve, reject) => {
     if(setExist) {
@@ -130,7 +163,7 @@ function initGeneralSettings(parameters) {
       properties: {
         skip: {
           description: `We will store the settings at the given location: ${setPath}. Is that okay?`,
-          pattern: /^y|n$/,
+          pattern: /^[y|n]$/,
           required: true,
           message: `Please answer with 'y' for yes and 'n' for no!`
         },
@@ -208,7 +241,8 @@ function initGeneralSettings(parameters) {
             path: result.credentialsPath,
             encrypted: result.encrypt,
             pathPrivKey: result.pathPrivKey
-          }
+          },
+          channels: {}
         }
       }
       let newSettings = Object.assign({}, appSettings, initSettings);
@@ -219,7 +253,7 @@ function initGeneralSettings(parameters) {
   });
 }
 
-function initCredentials(parameters) {
+function initCredentials (parameters) {
   let {setPath, appSettings, credsExist, credsPath, appCredentials} = parameters;
   let {encrypted, pathPrivKey} = appSettings.generalSettings.credentialsStore;
   return new Promise((resolve, reject) => {
@@ -249,7 +283,7 @@ function initCredentials(parameters) {
         properties: {
           skip: {
             description: `We will store the credentials at the given location: ${path.resolve(credsPath)}. Is that okay?`,
-            pattern: /^y|n$/,
+            pattern: /^[y|n]$/,
             required: true,
             message: `Please answer with 'y' for yes and 'n' for no!`
           },
@@ -295,10 +329,10 @@ function initCredentials(parameters) {
   });
 };
 
-function setupConversationService(parameters) {
+function setupConversationService (parameters) {
   let {setPath, appSettings, credsExist, credsPath, appCredentials, defaultCredsService} = parameters;
   return new Promise((resolve, reject) => {
-    console.log('############################\n  Setup Conversation Service\n############################');
+    console.log('\n############################\n  Setup Conversation Service \n############################\n');
     console.log('Note: You can find all parameters on bluemix. Make sure to name the service as defined in bluemix!');
     console.log('Please provide the following parameters:');
 
@@ -341,9 +375,23 @@ function setupConversationService(parameters) {
     prompt.message = 'Conversation';
     prompt.get(schema, function (err, result) {
       if (!result) {
-        console.log('Bye!');
+        console.log('\nBye!');
         process.exit(0);
       }
+
+      appSettings.conversationMiddleware = appSettings.conversationMiddleware ? appSettings.conversationMiddleware : {};
+      let config = appSettings.conversationMiddleware.config ? appSettings.conversationMiddleware.config : [];
+
+      appSettings.generalSettings.supportedLanguages.forEach(lang => {
+        let currConMid = config.find(ele => ele.locale === lang);
+        if (!currConMid || !currConMid.workspaceId) {
+          currConMid = {workspaceId: '<Missing Workspace ID>',locale: lang};
+          config.push(currConMid);
+        }
+      });
+
+      appSettings.conversationMiddleware = Object.assign({}, appSettings.conversationMiddleware, {config: config});
+
       let newConversation = [
         {
          "credentials": {
@@ -355,19 +403,21 @@ function setupConversationService(parameters) {
         }
       ]
       appCredentials = Object.assign({}, appCredentials, {conversation:newConversation});
-      defaultCredsService
-      .store({credentials: appCredentials}).
-      then(() => {
+      Promise.all([
+        storeFile(setPath, appSettings),
+        defaultCredsService.store({credentials: appCredentials})
+      ])
+      .then(() => {
         resolve(Object.assign(parameters, appCredentials));
       });
     });
   });
 }
 
-function setupToneAnalyzer(parameters) {
+function setupToneAnalyzer (parameters) {
   let {setPath, appSettings, credsExist, credsPath, appCredentials, defaultCredsService} = parameters;
   return new Promise((resolve, reject) => {
-    console.log('############################\n  Setup Tone Analyzer \n############################');
+    console.log('\n############################\n  Setup Tone Analyzer \n############################\n');
     console.log('Note: You can find all parameters on bluemix. Make sure to name the service as defined in bluemix!');
     console.log('Please provide the following parameters:');
 
@@ -390,7 +440,7 @@ function setupToneAnalyzer(parameters) {
         skip: {
           description: 'Do you want to use the Tone Analyzer? Otherwise we can skip it. (y/n)',
           default: (appSettings.toneAnalyzerService && appSettings.toneAnalyzerService.enabled) ? 'y' : 'n',
-          pattern: /^y|n$/,
+          pattern: /^[y|n]$/,
           required: true,
           message: `Please answer with 'y' for yes and 'n' for no!`
         },
@@ -426,6 +476,8 @@ function setupToneAnalyzer(parameters) {
       }
 
       let toneAnalyzernabled = (result.skip === 'y');
+      appSettings.toneAnalyzerService = Object.assign({}, appSettings.toneAnalyzerService, {enabled: toneAnalyzernabled})
+
       let newToneAnalyzer = [
         {
          "credentials": {
@@ -436,8 +488,6 @@ function setupToneAnalyzer(parameters) {
          "name": result.name
         }
       ]
-
-      appSettings.toneAnalyzerService = Object.assign({}, appSettings.toneAnalyzerService, {enabled: toneAnalyzernabled})
       appCredentials = Object.assign({}, appCredentials, {tone_analyzer:newToneAnalyzer});
       Promise.all([
         storeFile(setPath, appSettings),
@@ -452,13 +502,12 @@ function setupToneAnalyzer(parameters) {
 
 }
 
-function setupLanguageTranslator(parameters) {
+function setupLanguageTranslator (parameters) {
   let {setPath, appSettings, credsExist, credsPath, appCredentials, defaultCredsService} = parameters;
   return new Promise((resolve, reject) => {
-    console.log('############################\n  Setup Langauge Translator \n############################');
+    console.log('\n############################\n  Setup Langauge Translator \n############################\n');
     console.log('Note: You can find all parameters on bluemix. Make sure to name the service as defined in bluemix!');
     console.log('Please provide the following parameters:');
-
     let defaultLanguageTranslator;
     if (appCredentials.language_translator && appCredentials.language_translator.length >= 0) {
       defaultLanguageTranslator = appCredentials.language_translator[0];
@@ -473,11 +522,12 @@ function setupLanguageTranslator(parameters) {
          "name": "wch-languagetranslator"
         };
     }
+
     let schema = {
       properties: {
         skip: {
           description: 'Do you want to use the Tone Langauge Translator? Otherwise we can skip it. (y/n)',
-          pattern: /^y|n$/,
+          pattern: /^[y|n]$/,
           required: true,
           default: (appSettings.languageTranslationService && appSettings.languageTranslationService.enabled) ? 'y' : 'n',
           message: `Please answer with 'y' for yes and 'n' for no!`
@@ -514,36 +564,36 @@ function setupLanguageTranslator(parameters) {
       }
 
       let languageAnalyzerEnabled = (result.skip === 'y');
-      let newLanguageAnalyzer = [
+      appSettings.languageTranslationService = Object.assign({}, appSettings.languageTranslationService, {enabled: languageAnalyzerEnabled})
+
+      let newLanguageTranslator = [
         {
-         "credentials": {
-          "url": result.url,
-          "username": result.username,
-          "password": result.password
+         credentials: {
+          url: result.url,
+          username: result.username,
+          password: result.password
          },
-         "name": result.name
+         name: result.name
         }
       ]
-
-      appSettings.languageTranslationService = Object.assign({}, appSettings.languageTranslationService, {enabled: languageAnalyzerEnabled})
-      appCredentials = Object.assign({}, appCredentials, {language_translator:newLanguageAnalyzer});
+      Object.assign(appCredentials, {language_translator:newLanguageTranslator});
       Promise.all([
         storeFile(setPath, appSettings),
         defaultCredsService.store({credentials: appCredentials})
       ])
       .then(() => {
+        console.log('appCredentials ', appCredentials.language_translator)
         resolve(Object.assign(parameters, appCredentials));
       });
     });
-
   });
 
 }
 
-function setupGeolocation(parameters) {
+function setupGeolocation (parameters) {
   let {setPath, appSettings, credsExist, credsPath, appCredentials, defaultCredsService} = parameters;
   return new Promise((resolve, reject) => {
-    console.log('############################\n  Setup Geolocation \n############################');
+    console.log('\n############################\n  Setup Geolocation \n############################\n');
     console.log('Note: You can find all parameters on google developers.');
     console.log('Please provide the following parameters:');
 
@@ -565,7 +615,7 @@ function setupGeolocation(parameters) {
       properties: {
         skip: {
           description: 'Do you want to use the geolocation API? Otherwise we can skip it. (y/n)',
-          pattern: /^y|n$/,
+          pattern: /^[y|n]$/,
           required: true,
           default: (appSettings.geolocationService && appSettings.geolocationService.enabled) ? 'y' : 'n',
           message: `Please answer with 'y' for yes and 'n' for no!`
@@ -620,7 +670,7 @@ function setupGeolocation(parameters) {
 function setupWCH(parameters) {
   let {setPath, appSettings, credsExist, credsPath, appCredentials, defaultCredsService} = parameters;
   return new Promise((resolve, reject) => {
-    console.log('############################\n  Setup WCH \n############################');
+    console.log('\n############################\n  Setup WCH \n############################\n');
     console.log('Note: You can find all parameters when logged into the WCH authoring UI.');
     console.log('Please provide the following parameters:');
 
@@ -706,6 +756,386 @@ function setupWCH(parameters) {
   });
 }
 
+function setupMongoDb (parameters) {
+  let {setPath, appSettings, credsExist, credsPath, appCredentials, defaultCredsService} = parameters;
+  return new Promise((resolve, reject) => {
+    console.log('\n############################\n  Setup Mongo DB \n############################\n');
+    console.log('Please provide the following parameters:');
+
+    let defaultMongo;
+    if (appCredentials['user-provided']
+      && appCredentials['user-provided'].length >= 0
+      && appCredentials['user-provided'].find(ele => ele.name === 'db_config')) {
+      defaultMongo = appCredentials['user-provided'].find(ele => ele.name === 'db_config');
+    }
+    else {
+      defaultMongo = {
+        credentials: {
+          mongoUri: "https://..."
+        },
+        name: 'db_config'
+      };
+    }
+    let schema = {
+      properties: {
+        skip: {
+          description: 'Do you want to use a mongo db to persist all data? Otherwise we can skip it. (y/n)',
+          pattern: /^[y|n]$/,
+          required: true,
+          default: (appSettings.dbService && appSettings.dbService.enabled) ? 'y' : 'n',
+          message: `Please answer with 'y' for yes and 'n' for no!`
+        },
+        mongoUri: {
+          description: 'Url to Mongo DB',
+          required: true,
+          default: defaultMongo.credentials.mongoUri,
+          ask: () => prompt.history('skip').value === 'y'
+        }
+      }
+    };
+    prompt.message = 'DB';
+    prompt.get(schema, function (err, result) {
+      if (!result) {
+        console.log('\nBye!');
+        process.exit(0);
+      }
+
+      let dbEnabled = (result.skip === 'y');
+      appSettings.dbService = Object.assign({}, appSettings.dbService, {enabled: dbEnabled})
+
+      if (!appCredentials['user-provided']) {
+        appCredentials['user-provided'] = [];
+      }
+
+      let newDb = {
+        credentials: {
+          key: result.key,
+          verificationtoken: result.verificationtoken
+         },
+         name: 'db_config'
+        };
+
+      let index = appCredentials['user-provided'].findIndex(ele => ele.name === 'db_config');
+      if (index > -1) {
+        appCredentials['user-provided'][index] = newDb;
+      } else {
+        appCredentials['user-provided'].push(newDb);
+      }
+
+      Promise.all([
+        storeFile(setPath, appSettings),
+        defaultCredsService.store({credentials: appCredentials})
+      ])
+      .then(() => {
+        resolve(Object.assign(parameters, appCredentials));
+      });
+    });
+
+  });
+}
+
+// Channels
+
+function setupAlexa (parameters) {
+  let {setPath, appSettings, credsExist, credsPath, appCredentials, defaultCredsService} = parameters;
+  return new Promise((resolve, reject) => {
+    console.log('\n############################\n  Setup Alexa \n############################\n');
+    console.log('Note: You can find all parameters in your Alexa Skill.');
+    console.log('Please provide the following parameters:');
+
+    let defaultAlexa;
+    if (appCredentials['user-provided']
+      && appCredentials['user-provided'].length >= 0
+      && appCredentials['user-provided'].find(ele => ele.name === 'alexa_config')) {
+      defaultAlexa = appCredentials['user-provided'].find(ele => ele.name === 'alexa_config');
+    }
+    else {
+      defaultAlexa = {
+        credentials: {
+          appid: "amzn1.ask.skill.s0m3-c00l-idt0-y0ur-4pplicat10n"
+        },
+        name: 'alexa_config'
+      };
+    }
+    let schema = {
+      properties: {
+        skip: {
+          description: 'Do you want to use alexa as an output channel? Otherwise we can skip it. (y/n)',
+          pattern: /^[y|n]$/,
+          required: true,
+          default: (appSettings.channels.alexa && appSettings.channels.alexa.enabled) ? 'y' : 'n',
+          message: `Please answer with 'y' for yes and 'n' for no!`
+        },
+        appid: {
+          description: 'Skill Id',
+          required: true,
+          default: defaultAlexa.credentials.appid,
+          ask: () => prompt.history('skip').value === 'y'
+        }
+      }
+    };
+    prompt.message = 'Alexa';
+    prompt.get(schema, function (err, result) {
+      if (!result) {
+        console.log('\nBye!');
+        process.exit(0);
+      }
+
+      let AlexaEnabled = (result.skip === 'y');
+      appSettings.channels.alexa = Object.assign({}, appSettings.channels.alexa, {enabled: AlexaEnabled})
+
+      if (!appCredentials['user-provided']) {
+        appCredentials['user-provided'] = [];
+      }
+
+      let newAlexa = {
+        credentials: {
+          appid: result.appid
+         },
+         name: 'alexa_config'
+        };
+
+      let index = appCredentials['user-provided'].findIndex(ele => ele.name === 'alexa_config');
+      if (index > -1) {
+        appCredentials['user-provided'][index] = newAlexa;
+      } else {
+        appCredentials['user-provided'].push(newAlexa);
+      }
+
+      Promise.all([
+        storeFile(setPath, appSettings),
+        defaultCredsService.store({credentials: appCredentials})
+      ])
+      .then(() => {
+        resolve(Object.assign(parameters, appCredentials));
+      });
+    });
+
+  });
+}
+
+function setupFB (parameters) {
+  let {setPath, appSettings, credsExist, credsPath, appCredentials, defaultCredsService} = parameters;
+  return new Promise((resolve, reject) => {
+    console.log('\n############################\n  Setup Facebook \n############################\n');
+    console.log('Note: You can find all parameters in your Facebook App.');
+    console.log('Please provide the following parameters:');
+
+    let defaultFB;
+    if (appCredentials['user-provided']
+      && appCredentials['user-provided'].length >= 0
+      && appCredentials['user-provided'].find(ele => ele.name === 'fb_config')) {
+      defaultFB = appCredentials['user-provided'].find(ele => ele.name === 'fb_config');
+    }
+    else {
+      defaultFB = {
+        credentials: {
+          key: "EAAPgptw8sFoBALT4S...",
+          verificationtoken: "bq8DdfXUOLgDnwqcYuk9"
+        },
+        name: 'fb_config'
+      };
+    }
+    let schema = {
+      properties: {
+        skip: {
+          description: 'Do you want to use facebook as an output channel? Otherwise we can skip it. (y/n)',
+          pattern: /^[y|n]$/,
+          required: true,
+          default: (appSettings.channels.fb && appSettings.channels.fb.enabled) ? 'y' : 'n',
+          message: `Please answer with 'y' for yes and 'n' for no!`
+        },
+        key: {
+          description: 'App Key',
+          required: true,
+          default: defaultFB.credentials.key,
+          ask: () => prompt.history('skip').value === 'y'
+        },
+        verificationtoken: {
+          description: 'Verification Token',
+          required: true,
+          default: defaultFB.credentials.verificationtoken,
+          ask: () => prompt.history('skip').value === 'y'
+        }
+      }
+    };
+    prompt.message = 'Facebook';
+    prompt.get(schema, function (err, result) {
+      if (!result) {
+        console.log('\nBye!');
+        process.exit(0);
+      }
+
+      let FacebookEnabled = (result.skip === 'y');
+      appSettings.channels.fb = Object.assign({}, appSettings.channels.fb, {enabled: FacebookEnabled})
+
+      if (!appCredentials['user-provided']) {
+        appCredentials['user-provided'] = [];
+      }
+
+      let newFB = {
+        credentials: {
+          key: result.key,
+          verificationtoken: result.verificationtoken
+         },
+         name: 'fb_config'
+        };
+
+      let index = appCredentials['user-provided'].findIndex(ele => ele.name === 'fb_config');
+      if (index > -1) {
+        appCredentials['user-provided'][index] = newFB;
+      } else {
+        appCredentials['user-provided'].push(newFB);
+      }
+
+      Promise.all([
+        storeFile(setPath, appSettings),
+        defaultCredsService.store({credentials: appCredentials})
+      ])
+      .then(() => {
+        resolve(Object.assign(parameters, appCredentials));
+      });
+    });
+
+  });
+}
+
+function setupSlack (parameters) {
+  let {setPath, appSettings, credsExist, credsPath, appCredentials, defaultCredsService} = parameters;
+  return new Promise((resolve, reject) => {
+    console.log('\n############################\n  Setup Slack \n############################\n');
+    console.log('Note: You can find all parameters in your Slack App or Slack Bot. (https://api.slack.com/apps)');
+    console.log('Please provide the following parameters:');
+
+    let defaultSlack;
+    if (appCredentials['user-provided']
+      && appCredentials['user-provided'].length >= 0
+      && appCredentials['user-provided'].find(ele => ele.name === 'slack_config')) {
+      defaultSlack = appCredentials['user-provided'].find(ele => ele.name === 'slack_config');
+    }
+    else {
+      defaultSlack = {
+        credentials: {
+          clientid: "302183092184.793721974214",
+          clientsecret: "ecc462365ba57b11bgf37a79b9ab14b7",
+          verificationtoken: "FqxMwFQwMLtUF06HjPaMC7kg",
+          redirectUri: "https://<hostname>/oauth",
+          testbot: "xoxb-13461321324-6J7fH2zk3QIyfAixjQzf9xP5"
+        },
+        name: 'slack_config'
+      };
+    }
+    let schema = {
+      properties: {
+        skip: {
+          description: 'Do you want to use Slack as an output channel? Otherwise we can skip it. (y/n)',
+          pattern: /^[y|n]$/,
+          required: true,
+          default: (appSettings.channels.slack && appSettings.channels.slack.enabled) ? 'y' : 'n',
+          message: `Please answer with 'y' for yes and 'n' for no!`
+        },
+        useapp: {
+          description: 'Do you want to use an Slack Application? Otherwise we can skip it. (y/n)',
+          pattern: /^[y|n]$/,
+          required: true,
+          default: (appSettings.channels.slack && appSettings.channels.slack.startApp) ? 'y' : 'n',
+          message: `Please answer with 'y' for yes and 'n' for no!`
+        },
+        clientid: {
+          description: 'Client Id',
+          required: true,
+          default: defaultSlack.credentials.clientid,
+          ask: () => prompt.history('skip').value === 'y' && prompt.history('useapp').value === 'y'
+        },
+        clientsecret: {
+          description: 'Client Secret',
+          required: true,
+          default: defaultSlack.credentials.clientsecret,
+          ask: () => prompt.history('skip').value === 'y' && prompt.history('useapp').value === 'y'
+        },
+        clientsecret: {
+          description: 'Client Secret',
+          required: true,
+          default: defaultSlack.credentials.clientsecret,
+          ask: () => prompt.history('skip').value === 'y' && prompt.history('useapp').value === 'y'
+        },
+        verificationtoken: {
+          description: 'Verification Token',
+          required: true,
+          default: defaultSlack.credentials.verificationtoken,
+          ask: () => prompt.history('skip').value === 'y' && prompt.history('useapp').value === 'y'
+        },
+        redirectUri: {
+          description: 'Redirect URL',
+          required: true,
+          default: defaultSlack.credentials.redirectUri,
+          ask: () => prompt.history('skip').value === 'y' && prompt.history('useapp').value === 'y'
+        },
+        usebot: {
+          description: 'Do you want to use a simple testbot as an output channel? Otherwise we can skip it. (y/n)',
+          pattern: /^[y|n]$/,
+          required: true,
+          default: (appSettings.channels.slack && appSettings.channels.slack.startTestBot) ? 'y' : 'n',
+          message: `Please answer with 'y' for yes and 'n' for no!`
+        },
+        testbot: {
+          description: 'Testbot Token',
+          required: true,
+          default: defaultSlack.credentials.testbot,
+          ask: () => prompt.history('skip').value === 'y' && prompt.history('usebot').value === 'y'
+        }
+      }
+    };
+    prompt.message = 'Slack';
+    prompt.get(schema, function (err, result) {
+      if (!result) {
+        console.log('\nBye!');
+        process.exit(0);
+      }
+
+      let SlackEnabled = (result.skip === 'y');
+      let UseApp = (result.useapp === 'y');
+      let UseBot = (result.usebot === 'y');
+      appSettings.channels.fb = Object.assign({}, appSettings.channels.slack,
+        {
+          enabled: SlackEnabled,
+          startApp: UseApp,
+          startTestBot: UseBot
+        })
+
+      if (!appCredentials['user-provided']) {
+        appCredentials['user-provided'] = [];
+      }
+
+      let newSlack = {
+        credentials: {
+          clientid: result.clientid,
+          clientsecret: result.clientsecret,
+          verificationtoken: result.verificationtoken,
+          redirectUri: result.redirectUri,
+          testbot: result.testbot
+         },
+         name: 'slack_config'
+        };
+
+      let index = appCredentials['user-provided'].findIndex(ele => ele.name === 'slack_config');
+      if (index > -1) {
+        appCredentials['user-provided'][index] = newSlack;
+      } else {
+        appCredentials['user-provided'].push(newSlack);
+      }
+
+      Promise.all([
+        storeFile(setPath, appSettings),
+        defaultCredsService.store({credentials: appCredentials})
+      ])
+      .then(() => {
+        resolve(Object.assign(parameters, appCredentials));
+      });
+    });
+
+  });
+}
 
 function storeFile(filename, content) {
   return new Promise((resolve, reject) => {

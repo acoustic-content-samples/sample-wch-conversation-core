@@ -8,31 +8,41 @@
    "en"
   ],
   "developermode": true,
-  "confLvl": 0.7,
+  "confLvl": "0.7",
   "credentialsStore": {
    "path": "./dch_vcap.json",
    "encrypted": true,
    "pathPrivKey": "C:\\Users\\SvenSterbling\\.ssh\\id_rsa"
   }
  },
+ "channels": {
+  "alexa": {
+   "enabled": false
+  },
+  "fb": {
+   "enabled": true,
+   "startApp": true,
+   "startTestBot": true,
+   "debug": false
+  },
+  "slack": {
+   "enabled": true,
+   "startApp": true,
+   "startTestBot": true,
+   "debug": false
+  }
+ },
+ "toneAnalyzerService": {
+  "enabled": false
+ },
+ "languageTranslationService": {
+  "enabled": true
+ },
  "geolocationService": {
   "enabled": true
  },
- "languageTranslationService": {
-  "enabled": true,
-  "confLvl": 0.8,
-  "defaultLanguage": "en",
-  "supportedLanguages": [
-   "de",
-   "en"
-  ]
- },
- "toneAnalyzerService": {
-  "enabled": true,
-  "defaultLanguage": "en",
-  "supportedLanguages": [
-   "en"
-  ]
+ "dbService": {
+  "enabled": false
  },
  "conversationMiddleware": {
   "config": [
@@ -45,9 +55,5 @@
     "locale": "de"
    }
   ]
- },
- "wchService": {
-  "caching": true,
-  "ttl": 300
  }
 }
