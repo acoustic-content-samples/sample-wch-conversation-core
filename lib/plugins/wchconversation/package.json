@@ -1,0 +1,13 @@
+{
+    "name": "wchconversation",
+    "version": "0.0.1",
+    "main": "wchconversation.js",
+    "private": true,
+    "dependencies": {
+      "debug": "^3.1.0"
+    },
+    "plugin": {
+        "consumes": ["wch", "templating"],
+        "provides": ["wchconversation"]
+    }
+}
