@@ -3,7 +3,7 @@ This package contains the essential functionality to create a chatbot based on t
 
 # Plugins
 
-## clienttype
+### clienttype
 
 **Description:**
 
@@ -11,7 +11,7 @@ This package contains the essential functionality to create a chatbot based on t
 
 **Parameters:**
 
-## conversation
+### conversation
 
 **Description:**
 
@@ -19,7 +19,7 @@ This package contains the essential functionality to create a chatbot based on t
 
 **Parameters:**
 
-## conversationmiddleware
+### conversationmiddleware
 
 **Description:**
 
@@ -27,7 +27,7 @@ This package contains the essential functionality to create a chatbot based on t
 
 **Parameters:**
 
-## credentials
+### credentials
 
 **Description:**
 
@@ -35,7 +35,7 @@ This package contains the essential functionality to create a chatbot based on t
 
 **Parameters:**
 
-## developeractions
+### developeractions
 
 **Description:**
 
@@ -43,7 +43,7 @@ This package contains the essential functionality to create a chatbot based on t
 
 **Parameters:**
 
-## env
+### env
 
 **Description:**
 
@@ -51,7 +51,7 @@ This package contains the essential functionality to create a chatbot based on t
 
 **Parameters:**
 
-## geolocation
+### geolocation
 
 **Description:**
 
@@ -59,7 +59,7 @@ This package contains the essential functionality to create a chatbot based on t
 
 **Parameters:**
 
-## languagetranslator
+### languagetranslator
 
 **Description:**
 
@@ -67,7 +67,7 @@ This package contains the essential functionality to create a chatbot based on t
 
 **Parameters:**
 
-## templating
+### templating
 
 **Description:**
 
@@ -75,7 +75,7 @@ This package contains the essential functionality to create a chatbot based on t
 
 **Parameters:**
 
-## toneanalyzer
+### toneanalyzer
 
 **Description:**
 
@@ -83,7 +83,7 @@ This package contains the essential functionality to create a chatbot based on t
 
 **Parameters:**
 
-## wch
+### wch
 
 **Description:**
 
@@ -91,7 +91,7 @@ This package contains the essential functionality to create a chatbot based on t
 
 **Parameters:**
 
-## wchconversation
+### wchconversation
 
 **Description:**
 
@@ -99,7 +99,7 @@ This package contains the essential functionality to create a chatbot based on t
 
 **Parameters:**
 
-## wchsync
+### wchsync
 
 **Description:**
 
