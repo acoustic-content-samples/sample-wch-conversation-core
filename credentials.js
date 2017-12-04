@@ -263,7 +263,7 @@ function initCredentials (parameters) {
               privKPath: pathPrivKey,
               encrypted: encrypted,
               credsPath: credsPath,
-              modifiable: true
+              readOnly: false
             },
             null,
             (_this, credentialsService) => {
@@ -315,7 +315,7 @@ function initCredentials (parameters) {
               privKPath: pathPrivKey,
               encrypted: encrypted,
               credsPath: credsPath,
-              modifiable: true
+              readOnly: false
             },
             null,
             (_this, credentialsService) => {

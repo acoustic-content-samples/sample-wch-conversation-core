@@ -90,7 +90,7 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 **Provides:** `['credentials']`
 
 **Parameters:**<br/>
-***pubKPath*** - Absolute or relative path to the public RSA key. In case of RAS this can also be the path to the private key.<br/>
+***pubKPath*** - Absolute or relative path to the public RSA key. In case of RSA this can also be the path to the private key.<br/>
 ***privKPath*** - Absolute or relative path to the private  RSA key.<br/> 
 ***encrypted*** - Option to decide if the local credentials should get encrypted with the private RSA key. If true the file is encrypted.<br/> 
 ***credsPath*** - Absolute or relative path to the credentials file to store retrieve the credentials object.<br/> 
@@ -108,11 +108,14 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 ## developeractions
 
-**Description:**
+**Description:** Provides a conversationmiddleware plugin. Checks for the wchsync intent and triggers a synchronization between WCS and WCH.
 
-**Requires:**
+**Requires:** `['logging', 'wchsync']`
 
-**Parameters:**
+**Provides:** `['developeractions', 'developeractionsMiddleware']`
+
+**Parameters:**<br/>
+***modeDev*** - If modeDev is true the synchronization will be triggered. Otherwise the synchronization is disabled.
 
 ## env
 
