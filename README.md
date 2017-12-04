@@ -142,11 +142,15 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 ## geolocation
 
-**Description:**
+**Description:** Wrapper plugin around the [Google Geolocation API][[geolocationurl]]. Provides location based services for the conversationmiddleware plugin. If the text contains a flag to set a geolocation the user input text is send to the geolocation api to retrieve the lat and long values.
 
-**Requires:**
+**Requires:** `['logging', 'env']`
 
-**Parameters:**
+**Provides:** `['geolocation, 'geolocationMiddleware']`
+
+**Options:**<br/>
+**serviceName** - Name of the bluemix conversation service instance. The module fetches the credentials for authentication based on the given service name. The default name is *wch-conversation*.<br/>
+**enabled** - If true the geolocation service is enabled. Otherwise no geolocation will be set.<br/>
 
 ## languagetranslator
 
@@ -204,3 +208,4 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 [generatesshurl]: https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
 [botkitconversationmiddlewareurl]:https://github.com/watson-developer-cloud/botkit-middleware
 [cfenvurl]:https://github.com/cloudfoundry-community/node-cfenv
+[geolocationurl]:https://developers.google.com/maps/documentation/geolocation/intro?hl=de
