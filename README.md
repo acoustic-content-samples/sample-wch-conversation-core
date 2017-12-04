@@ -9,7 +9,7 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 # Plugins
 
-### clienttype
+## clienttype
 
 **Description:** A simple plugin that identifies the channel based on the incoming user message. Provides it's functionallity additionally as a conversation service middleware. It takes the message and conversationPayload object as given by the [conversationmiddleware][conversationmiddlewareurl] module before method. This plugin can be used as a simple blueprint on how to write your own middleware plugins for the conversationmiddleware plugin. (e.g. if you want to create custom actions that will call your internal service APIs)
 
@@ -27,7 +27,7 @@ If you fork this repository and want to do end2end tests make sure to run the ``
   });
 ```
 
-### conversation
+## conversation
 
 **Description:** Watson Conversation Plugin. Wraps the [watson-developer-cloud module][watsoncloudconversationurl] for ease of use inside of the chatbot core service. The plugin provides a locale specific map of conversation service instances to the correct conversation service instance. Fetches the credentials from the env plugin.
 
@@ -61,7 +61,7 @@ If you fork this repository and want to do end2end tests make sure to run the ``
   conversation.get('de-DE').conversation.uploadWorkspace(...);
 ```
 
-### conversationmiddleware
+## conversationmiddleware
 
 **Description:** Plugin that wraps the [Botkit Conversation Middleware][botkitconversationmiddlewareurl]. As part of this wrapper implementation you can plugin your own middleware where you can plugin custom actions before and after the call made against the conversation server. In order to reguster your middleware create a plugin which provides a before and/or after method and ends on the name 'Middleware' (e.g. clientTypeMiddleware). 
 
@@ -81,7 +81,32 @@ If you fork this repository and want to do end2end tests make sure to run the ``
   });
 ```
 
-### credentials
+## credentials
+
+**Description:** Local credentials plugin. Stores and retrieves the credentials required for all external services used. The current format is based on the bluemix service credentials. The file can optionally be encrypted with your local RSA private key for increased security.
+
+**Requires:** `['logging']`
+
+**Provides:** `['credentials']`
+
+**Parameters:**<br/>
+***pubKPath*** - Absolute or relative path to the public RSA key. In case of RAS this can also be the path to the private key.<br/>
+***privKPath*** - Absolute or relative path to the private  RSA key.<br/> 
+***encrypted*** - Option to decide if the local credentials should get encrypted with the private RSA key. If true the file is encrypted.<br/> 
+***credsPath*** - Absolute or relative path to the credentials file to store retrieve the credentials object.<br/> 
+***modifiable*** - Option to enable or disable the save/update capabilities of this plugin.<br/> 
+
+**Methods:**
+```javascript
+  credentials.get({credsPath: resolve(options.credsPath)})
+  .then(credentials => {
+    // decrypted object with all credentials
+  });
+  
+  credentials.store({credentials: appCredentials});
+```
+
+## developeractions
 
 **Description:**
 
@@ -89,7 +114,7 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 **Parameters:**
 
-### developeractions
+## env
 
 **Description:**
 
@@ -97,7 +122,7 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 **Parameters:**
 
-### env
+## geolocation
 
 **Description:**
 
@@ -105,7 +130,7 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 **Parameters:**
 
-### geolocation
+## languagetranslator
 
 **Description:**
 
@@ -113,7 +138,7 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 **Parameters:**
 
-### languagetranslator
+## templating
 
 **Description:**
 
@@ -121,7 +146,7 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 **Parameters:**
 
-### templating
+## toneanalyzer
 
 **Description:**
 
@@ -129,7 +154,7 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 **Parameters:**
 
-### toneanalyzer
+## wch
 
 **Description:**
 
@@ -137,7 +162,7 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 **Parameters:**
 
-### wch
+## wchconversation
 
 **Description:**
 
@@ -145,15 +170,7 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 **Parameters:**
 
-### wchconversation
-
-**Description:**
-
-**Requires:**
-
-**Parameters:**
-
-### wchsync
+## wchsync
 
 **Description:**
 
