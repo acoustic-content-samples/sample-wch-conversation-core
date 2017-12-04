@@ -13,14 +13,14 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 **Description:** A simple plugin that identifies the channel based on the incoming user message. Provides it's functionallity additionally as a conversation service middleware. It takes the message and conversationPayload object as given by the [conversationmiddleware][conversationmiddlewareurl] module before method. This plugin can be used as a simple blueprint on how to write your own middleware plugins for the conversationmiddleware plugin. (e.g. if you want to create custom actions that will call your internal service APIs)
 
-**Requires:** ```['logging']```
+**Requires:** `['logging']`
 
-**Provides:** ```['clientType', 'clientTypeMiddleware']```
+**Provides:** `['clientType', 'clientTypeMiddleware']`
 
 **Options:** None
 
 **Methods:**
-```
+```javascript
   clientType.identify(message, conversationPayload)
   .then(clientType => {
     // Returns a simple object e.g. {clientType: 'rest'}
@@ -31,16 +31,16 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 **Description:** Watson Conversation Plugin. Wraps the [watson-developer-cloud module][watsoncloudconversationurl] for ease of use inside of the chatbot core service. The plugin provides a locale specific map of conversation service instances to the correct conversation service instance. Fetches the credentials from the env plugin.
 
-**Requires:** ```['env', 'logging']```
+**Requires:** `['env', 'logging']`
 
-**Provides:** ```['conversation']```
+**Provides:** `['conversation']`
 
-**Options:**
-***serviceName*** - Name of the bluemix conversation service instance. The module fetches the credentials for authentication based on the given service name.
+**Options:**<br/>
+***serviceName*** - Name of the bluemix conversation service instance. The module fetches the credentials for authentication based on the given service name. The default name is *wch-conversation*.<br/>
 ***workspaceConfigs*** - Locale specific mapping from a locale to a Watson Conversation Service Workspace. See app_settings.json for a sample. 
 
 **Methods:**
-```
+```javascript
   conversation.get('de').getWorkspace()
   .then(workspace => {
     // Returns a simple object containing the workspace
@@ -63,11 +63,23 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 ### conversationmiddleware
 
-**Description:**
+**Description:** Plugin that wraps the [Botkit Conversation Middleware][botkitconversationmiddlewareurl]. As part of this wrapper implementation you can plugin your own middleware where you can plugin custom actions before and after the call made against the conversation server. In order to reguster your middleware create a plugin which provides a before and/or after method and ends on the name 'Middleware' (e.g. clientTypeMiddleware). 
 
-**Requires:**
+**Requires:** `['env', 'logging', '<yourMiddlewareName>Middleware', ...]`
 
-**Parameters:**
+**Provides:** `['conversationmiddleware']`
+
+**Parameters:**<br/>
+***serviceName*** - Name of the bluemix conversation service instance. The module fetches the credentials for authentication based on the given service name. The default name is *wch-conversation*.<br/>
+***middlewareConfigs*** - Locale specific mapping from a locale to a Watson Conversation Service Workspace. See app_settings.json for a sample. 
+
+**Methods:**
+```javascript
+  conversationMiddleware.get(locale).interpret(bot, message, function () {
+    // message.watsonData contains the conversation service response
+    // message.watsonError contains the error message in case something went wrong
+  });
+```
 
 ### credentials
 
@@ -155,3 +167,4 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 [conversationmiddlewareurl]: https://github.com/watson-developer-cloud/botkit-middleware
 [watsoncloudconversationurl]: https://github.com/watson-developer-cloud/node-sdk/#conversation
 [generatesshurl]: https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
+[botkitconversationmiddlewareurl]:https://github.com/watson-developer-cloud/botkit-middleware
