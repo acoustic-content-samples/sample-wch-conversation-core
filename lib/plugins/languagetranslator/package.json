@@ -4,11 +4,10 @@
     "main": "languagetranslator.js",
     "private": true,
     "dependencies": {
-      "debug": "^3.1.0",
       "watson-developer-cloud": "^2.39.2"
     },
     "plugin": {
-        "consumes": ["env"],
+        "consumes": ["env", "logging"],
         "provides": ["languageTranslator", "languageTranslatorMiddleware"]
     }
 }

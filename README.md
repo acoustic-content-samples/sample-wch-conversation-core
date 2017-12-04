@@ -17,7 +17,7 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 **Provides:** `['clientType', 'clientTypeMiddleware']`
 
-**Options:** None
+**Architect Configuration Options:** None
 
 **Methods:**
 ```javascript
@@ -35,7 +35,7 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 **Provides:** `['conversation']`
 
-**Options:**<br/>
+**Architect Configuration Options:**<br/>
 ***serviceName*** - Name of the bluemix conversation service instance. The module fetches the credentials for authentication based on the given service name. The default name is *wch-conversation*.<br/>
 ***workspaceConfigs*** - Locale specific mapping from a locale to a Watson Conversation Service Workspace. See app_settings.json for a sample. 
 
@@ -142,23 +142,30 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 ## geolocation
 
-**Description:** Wrapper plugin around the [Google Geolocation API][[geolocationurl]]. Provides location based services for the conversationmiddleware plugin. If the text contains a flag to set a geolocation the user input text is send to the geolocation api to retrieve the lat and long values.
+**Description:** Wrapper plugin around the [Google Geolocation API][geolocationurl]. Provides location based services for the conversationmiddleware plugin. If the text contains a flag to set a geolocation the user input text is send to the geolocation api to retrieve the lat and long values.
 
 **Requires:** `['logging', 'env']`
 
 **Provides:** `['geolocation, 'geolocationMiddleware']`
 
-**Options:**<br/>
+**Architect Configuration Options:**<br/>
 **serviceName** - Name of the bluemix conversation service instance. The module fetches the credentials for authentication based on the given service name. The default name is *wch-conversation*.<br/>
 **enabled** - If true the geolocation service is enabled. Otherwise no geolocation will be set.<br/>
 
 ## languagetranslator
 
-**Description:**
+**Description:** Wrapper plugin around the [Watson Language Translator][languagetranslationurl]. If the message does not contain any language information this conversationmiddleware plugin will infer the language based on the user input text. This information is stored in the conversation context. If the identified lanugage is not supported we will use the fallback language.
 
-**Requires:**
+**Requires:** `['logging', 'env']`
 
-**Parameters:**
+**Provides:** `['languageTranslator, 'languageTranslatorMiddleware']`
+
+**Architect Configuration Options:**<br/>
+**serviceName** - Name of the bluemix language translator service instance. The module fetches the credentials for authentication based on the given service name. The default name is *wch-conversation*.<br/>
+**supportedLanguages** - All supported output languages.<br/>
+**defaultLanguage** - The default language in case the user sets an unsupported language or we have no information at all about the language of the user.<br/>
+
+## logging
 
 ## templating
 
@@ -209,3 +216,4 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 [botkitconversationmiddlewareurl]:https://github.com/watson-developer-cloud/botkit-middleware
 [cfenvurl]:https://github.com/cloudfoundry-community/node-cfenv
 [geolocationurl]:https://developers.google.com/maps/documentation/geolocation/intro?hl=de
+[languagetranslationurl]:https://www.ibm.com/watson/services/language-translator/

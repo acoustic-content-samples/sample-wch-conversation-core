@@ -4,7 +4,6 @@
     "main": "geolocation.js",
     "private": true,
     "dependencies": {
-      "debug": "^3.1.0",
       "@google/maps": "^0.4.3"
     },
     "plugin": {
