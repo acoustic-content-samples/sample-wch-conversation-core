@@ -4,11 +4,10 @@
     "main": "env.js",
     "private": true,
     "dependencies": {
-      "debug": "^3.1.0",
       "cfenv": "^1.0.4"
     },
     "plugin": {
-        "consumes": ["credentials"],
+        "consumes": ["credentials", "logging"],
         "provides": ["env"]
     }
 }

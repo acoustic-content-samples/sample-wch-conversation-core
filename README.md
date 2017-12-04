@@ -119,11 +119,26 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 ## env
 
-**Description:**
+**Description:** Wrapper plugin around the [cfenv module][cfenvurl]. Provides the bluemix credentials for all external services used. While running locally we fetch the credentials through the credentials plugin. When running on bluemixthe credentials are managed through bluemix services.
 
-**Requires:**
+**Requires:** `['logging', 'credentials']`
 
-**Parameters:**
+**Provides:** `['env']`
+
+**Parameters:**<br/>
+***credsPath*** - Relative or absolute path to the credentials file where all bluemix credentials are located. Not used when running on bluemix.
+
+**Methods:**
+```javascript
+  let conversationCreds = env.getService('wch-conversation');
+  let conversation = new ConversationV1({
+    workspace_id: workspaceConfig.workspaceId,
+    url: conversationCreds.credentials.url,
+    username: conversationCreds.credentials.username,
+    password: conversationCreds.credentials.password,
+    version_date: ConversationV1.VERSION_DATE_2017_04_21
+  });
+```
 
 ## geolocation
 
@@ -188,3 +203,4 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 [watsoncloudconversationurl]: https://github.com/watson-developer-cloud/node-sdk/#conversation
 [generatesshurl]: https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
 [botkitconversationmiddlewareurl]:https://github.com/watson-developer-cloud/botkit-middleware
+[cfenvurl]:https://github.com/cloudfoundry-community/node-cfenv
