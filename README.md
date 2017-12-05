@@ -223,11 +223,20 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 ## wch
 
-**Description:**
+**Description:** [Sample wch node wrapper][wchconnectorurl].
 
-**Requires:**
+**Requires:** `['env', 'logging']`
 
-**Parameters:**
+**Provides:** `['wch']`
+
+**Parameters:**<br/>
+**serviceName** - Name of the bluemix tone analyzer service instance. The module fetches the credentials for authentication based on the given service name. The default name is *wch_config*.<br/>
+
+**Methods:**
+```javascript
+  // Full access to the sample-wch-node-wrapper
+  // Check out the samples over there
+```
 
 ## wchconversation
 
@@ -258,3 +267,4 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 [languagetranslationurl]:https://www.ibm.com/watson/services/language-translator/
 [debugurl]:https://github.com/visionmedia/debug
 [handlebarsurl]:http://handlebarsjs.com/
+[wchconnectorurl]:https://github.com/ibm-wch/sample-wch-node-wrapper
