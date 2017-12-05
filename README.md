@@ -186,11 +186,19 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 ## templating
 
-**Description:**
+**Description:** Templating engine based on [handlebars][handlebarsurl]. It uses the complete search result and parses it with the watsonData.
 
-**Requires:**
+**Requires:** `[]`
 
-**Parameters:**
+**Provides:** `['templating']`
+
+**Parameters:**<br/>
+-
+
+**Methods:**
+```javascript
+  templating.parseJSON(watsonData, searchResult);
+```
 
 ## toneanalyzer
 
@@ -235,3 +243,4 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 [geolocationurl]:https://developers.google.com/maps/documentation/geolocation/intro?hl=de
 [languagetranslationurl]:https://www.ibm.com/watson/services/language-translator/
 [debugurl]:https://github.com/visionmedia/debug
+[handlebarsurl]:http://handlebarsjs.com/
