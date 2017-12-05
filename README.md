@@ -167,6 +167,23 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 ## logging
 
+**Description:** Simple logging module based on [debug][debugurl].
+
+**Requires:** `[]`
+
+**Provides:** `['logging']`
+
+**Parameters:**<br/>
+***packageName*** - The name of the package which is used for logging. Identificator that the logging is for a plugin from the wch-conversation-core.
+
+**Methods:**
+```javascript
+  const logger = logging('geolocation');
+  logger.methodEntry('setup', options, imports);
+  logger.methodExit('setup', returnvalue);
+  logger.debug('Some debug message with %o', param);
+```
+
 ## templating
 
 **Description:**
@@ -217,3 +234,4 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 [cfenvurl]:https://github.com/cloudfoundry-community/node-cfenv
 [geolocationurl]:https://developers.google.com/maps/documentation/geolocation/intro?hl=de
 [languagetranslationurl]:https://www.ibm.com/watson/services/language-translator/
+[debugurl]:https://github.com/visionmedia/debug
