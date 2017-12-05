@@ -174,7 +174,7 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 **Provides:** `['logging']`
 
 **Parameters:**<br/>
-***packageName*** - The name of the package which is used for logging. Identificator that the logging is for a plugin from the wch-conversation-core.
+***packageName*** - The name of the package which is used for logging. Identificator that the logging is for a plugin from the wch-conversation-core.<br/>
 ***toFile*** - If set to true the debug log will also be stored in a file.
 
 **Methods:**
@@ -203,11 +203,23 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 ## toneanalyzer
 
-**Description:**
+**Description:** Wrapper to use the [Watson Tone Analyzer][watsoncloudtoneanalyzernurl] inside of the conversationmiddleware. The result is stored in the conversation context before it's called.
 
-**Requires:**
+**Requires:** `['env', 'logging']`
 
-**Parameters:**
+**Provides:** `['toneanalyzer', 'toneanalyzerMiddleware']`
+
+**Parameters:**<br/>
+**serviceName** - Name of the bluemix tone analyzer service instance. The module fetches the credentials for authentication based on the given service name. The default name is *wch-toneanalyzer*.<br/>
+**enabled** -If true the geolocation service is enabled. Otherwise no geolocation will be set.<br/>
+
+**Methods:**
+```javascript
+  toneanalyzer.identify(message, conversationPayload)
+  .then(identifiedTone => {
+    // Do something with the toneanylzer result
+  });
+```
 
 ## wch
 
@@ -238,6 +250,7 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 [architecturl]: https://github.com/c9/architect
 [conversationmiddlewareurl]: https://github.com/watson-developer-cloud/botkit-middleware
 [watsoncloudconversationurl]: https://github.com/watson-developer-cloud/node-sdk/#conversation
+[watsoncloudtoneanalyzernurl]: https://github.com/watson-developer-cloud/node-sdk/#tone-analyzer
 [generatesshurl]: https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
 [botkitconversationmiddlewareurl]:https://github.com/watson-developer-cloud/botkit-middleware
 [cfenvurl]:https://github.com/cloudfoundry-community/node-cfenv
