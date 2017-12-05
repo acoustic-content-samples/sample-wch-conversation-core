@@ -175,6 +175,7 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 **Parameters:**<br/>
 ***packageName*** - The name of the package which is used for logging. Identificator that the logging is for a plugin from the wch-conversation-core.
+***toFile*** - If set to true the debug log will also be stored in a file.
 
 **Methods:**
 ```javascript
