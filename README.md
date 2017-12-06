@@ -240,11 +240,24 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 ## wchconversation
 
-**Description:**
+**Description:** Plugin which takes a response from the Watson Conversation Service and returns a search result from WCH with the best matching answer/content. Based on the input a SOLR search query is created. Based on that it processes the found results, all attachments and location specific responses.
 
-**Requires:**
+**Requires:** `['wch', 'logging', 'templating']`
 
-**Parameters:**
+**Provides:** `['wchconversation']`
+
+**Parameters:**<br/>
+**enableCache** - If true the response from WCH is cached for simillar requests.<br/>
+**ttl** - Time until an element is removed from cache. In seconds. Default is 300 seconds (5 minutes).<br/>
+
+**Methods:**
+```javascript
+  wchconversation.getWchConversationResponses(watsonData)
+    .then(({locationResp, conversationResp, followupResp}) => {
+        debug('locationResp %o', locationResp);
+        return {respToUse: (locationResp.searchResult.numFound > 0) ? locationResp : conversationResp, followupResp};
+    });
+```
 
 ## wchsync
 
