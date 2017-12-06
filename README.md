@@ -261,11 +261,22 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 ## wchsync
 
-**Description:**
+**Description:** Synchronization plugin of the Watson Conversation Service Structure to Watson Content Hub. The structure of the Conversation Service is represented as multiple taxonomies in WCH. (A taxonomy per concept) Currently the synchronization is one way only. (WCS --> WCH)
 
-**Requires:**
+**Requires:** `['wch', 'logging', 'conversation']`
 
-**Parameters:**
+**Provides:** `['wchsync']`
+
+**Parameters:**<br/>
+**mainWorkspace** - Locale of the main workspace that will be used for the synchronization. Normally should be your default language.<br/>
+
+**Methods:**
+```javascript
+  wchsync.push({fromSys:'WCS', toSys:'WCH'})
+  .then(result => {
+    // Sync succesfull
+  });
+```
 
 [watsonconversationurl]: https://www.ibm.com/watson/services/conversation/
 [watsoncontenthuburl]: https://www.ibm.com/de-de/marketplace/cloud-cms-solution

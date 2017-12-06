@@ -1,0 +1,1169 @@
+{
+  "intents": [
+      {
+         "parent": {
+            "name": "intents",
+            "id": "6e4827e8e902ad7f810cb8c2a52b03e9"
+         },
+         "children": [
+            {
+               "name": "whatsmyname_de",
+               "id": "fc2fab2c-4988-4f5c-9fa1-425da305098b"
+            },
+            {
+               "name": "pushwch",
+               "id": "012b59002e810f0b7ab0df163a174920"
+            },
+            {
+               "name": "negativeresp_de",
+               "id": "f52c7d8d-6d6c-438b-bbd6-c00e8ed5ab95"
+            },
+            {
+               "name": "setgeolocation",
+               "id": "3ba094aa1e480ff57bda0d3b967f44db"
+            },
+            {
+               "name": "showimpressionsevent",
+               "id": "73c78dcf-83ed-4731-9d7b-e5efd3ac0fa2"
+            },
+            {
+               "name": "showimpressionsevent_de",
+               "id": "33a27d5e-5289-4f60-b7dd-12b2e6abec5c"
+            },
+            {
+               "name": "positiveresp",
+               "id": "b570a4c73c9609e9ec137f331dd2fed2"
+            },
+            {
+               "name": "thanks",
+               "id": "e6ef8b49bf960412d31d1d3bd2ab4b3c"
+            },
+            {
+               "name": "pushwch_de",
+               "id": "e96968f7-e093-4775-a638-8960f88b5549"
+            },
+            {
+               "name": "welcome",
+               "id": "bb27319177a166ae627605947c5f7f7e"
+            },
+            {
+               "name": "information",
+               "id": "6e4827e8e902ad7f810cb8c2a52b69d8"
+            },
+            {
+               "name": "changename",
+               "id": "0ead55de6d1ea6a33aae4a5b6b5b93a1"
+            },
+            {
+               "name": "negativeresp",
+               "id": "b570a4c73c9609e9ec137f331dd2f16d"
+            },
+            {
+               "name": "goodbye_de",
+               "id": "70d28873-3987-4966-8577-ee1e18aa6d46"
+            },
+            {
+               "name": "switchpersona_de",
+               "id": "516cd449-401c-4a2a-9dea-32bc9a3f8b53"
+            },
+            {
+               "name": "information_de",
+               "id": "07dbec81-a6e5-4f97-b4aa-d41e56aa66f0"
+            },
+            {
+               "name": "thanks_de",
+               "id": "0724c1ef-3a01-4ce1-84a5-3ecbb51e5601"
+            },
+            {
+               "name": "howto",
+               "id": "3c21dad2434642ac4a48a28516397de7"
+            },
+            {
+               "name": "showname",
+               "id": "cbc3b28a-50e2-4f9d-a9b3-d9a10c5bd500"
+            },
+            {
+               "name": "whatsmyname",
+               "id": "de85617e-6693-42a6-b5be-f1368087319c"
+            },
+            {
+               "name": "positiveresp_de",
+               "id": "0eec5807-83bd-47b4-a64e-79f3f247c0b6"
+            },
+            {
+               "name": "goodbye",
+               "id": "b570a4c73c9609e9ec137f331dd30a97"
+            },
+            {
+               "name": "introduction_de",
+               "id": "2f6bd872-9085-4a36-a272-3dfcb41c29d4"
+            },
+            {
+               "name": "changename_de",
+               "id": "bd832561-69d6-462b-a25c-11455af0fc1f"
+            },
+            {
+               "name": "switchpersona",
+               "id": "c88e2d8ea1537ef5b266774eea0463c1"
+            },
+            {
+               "name": "howto_de",
+               "id": "7369e255-00b0-4fc4-86a1-0ec4d07880a7"
+            },
+            {
+               "name": "welcome_de",
+               "id": "a62f1e23-80bc-4805-8ed8-e6e7fbab44c2"
+            },
+            {
+               "name": "setgeolocation_de",
+               "id": "9e48e384-ebdb-4958-9e8b-dc97ebf54db4"
+            },
+            {
+               "name": "keepintouch_de",
+               "id": "b3740cd0-36a6-450f-a0cf-186cd1d38fd9"
+            },
+            {
+               "name": "keepintouch",
+               "id": "e6ef8b49bf960412d31d1d3bd2ab281c"
+            },
+            {
+               "name": "introduction",
+               "id": "b8c6206a55dd08220e3405748bc493ac"
+            }
+         ]
+      }
+   ],
+   "entities": [
+      {
+         "parent": {
+            "name": "entities",
+            "id": "3c21dad2434642ac4a48a28516393082"
+         },
+         "children": [
+            {
+               "name": "persona",
+               "id": "c4eb325d2ee45480559aa0840409bbfe"
+            },
+            {
+               "name": "event",
+               "id": "2ec2f9ee-e01d-4bd2-8e3f-2cf208c7d4b5"
+            },
+            {
+               "name": "adjective",
+               "id": "4c889914160a14eaf584c13cd8f38d3a"
+            },
+            {
+               "name": "companyname",
+               "id": "6e4827e8e902ad7f810cb8c2a52b3f53"
+            },
+            {
+               "name": "sys-date",
+               "id": "6e4827e8e902ad7f810cb8c2a52b7063"
+            },
+            {
+               "name": "product",
+               "id": "4c889914160a14eaf584c13cd80b178d"
+            },
+            {
+               "name": "feature",
+               "id": "fad37b71f9f5935f82913edeb90f78b1"
+            },
+            {
+               "name": "chitchat",
+               "id": "f08c09393f588be1e49ab2090302026b"
+            },
+            {
+               "name": "producttype",
+               "id": "e152fe15128e5128b939da7cab2689ac"
+            },
+            {
+               "name": "difference",
+               "id": "d32ac974bbe1173f5a1b0fd5b63cf1d2"
+            },
+            {
+               "name": "steuern",
+               "id": "c74a981d-8518-4286-bfdf-ba667e0bd9a4"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "persona",
+            "id": "c4eb325d2ee45480559aa0840409bbfe"
+         },
+         "children": [
+            {
+               "name": "mrwatson",
+               "id": "d332127df4c37b2d4632699e7e16bccc"
+            },
+            {
+               "name": "drhub",
+               "id": "c88e2d8ea1537ef5b266774eea047223"
+            },
+            {
+               "name": "profcontent",
+               "id": "c88e2d8ea1537ef5b266774eea047616"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "event",
+            "id": "2ec2f9ee-e01d-4bd2-8e3f-2cf208c7d4b5"
+         },
+         "children": [
+            {
+               "name": "Dmexco",
+               "id": "4511620a-b2f6-49e4-bd46-d5b68852c344"
+            },
+            {
+               "name": "MTL",
+               "id": "860e9185-5685-4be0-b53a-e8c38320a628"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "adjective",
+            "id": "4c889914160a14eaf584c13cd8f38d3a"
+         },
+         "children": [
+            {
+               "name": "cool",
+               "id": "44ca9e606b6576694bdbea223a6c41c1"
+            },
+            {
+               "name": "improvements",
+               "id": "012b59002e810f0b7ab0df163a1d2d2e"
+            },
+            {
+               "name": "new",
+               "id": "d332127df4c37b2d4632699e7e16b8a7"
+            },
+            {
+               "name": "like",
+               "id": "7ac64d03-6350-4c75-9c37-cbbf561673c1"
+            },
+            {
+               "name": "detailed",
+               "id": "1ffc133e786e0d65f2834ae48351f865"
+            },
+            {
+               "name": "integration",
+               "id": "b84c6bad3cad3ec6ffff23c78ee5660c"
+            },
+            {
+               "name": "difference",
+               "id": "d32ac974bbe1173f5a1b0fd5b63cf1d2"
+            },
+            {
+               "name": "important",
+               "id": "02f066c403ff7ee38a0e52b28ac7aad4"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "companyname",
+            "id": "6e4827e8e902ad7f810cb8c2a52b3f53"
+         },
+         "children": [
+            {
+               "name": "sqm-ok",
+               "id": "44ca9e606b6576694bdbea223a59530a"
+            },
+            {
+               "name": "Mode IT Systems GmbH & Co KG",
+               "id": "44ca9e606b6576694bdbea223a5944db"
+            },
+            {
+               "name": "Baumann&Baltner",
+               "id": "1ffc133e786e0d65f2834ae4835220c8"
+            },
+            {
+               "name": "Mac Mode",
+               "id": "d32ac974bbe1173f5a1b0fd5b63d4aca"
+            },
+            {
+               "name": "Axians IT",
+               "id": "1ffc133e786e0d65f2834ae483520591"
+            },
+            {
+               "name": "Benteler Business Services",
+               "id": "d32ac974bbe1173f5a1b0fd5b63d3351"
+            },
+            {
+               "name": "HELM AG",
+               "id": "d6c8a8fc916579191382d0e545433aa7"
+            },
+            {
+               "name": "Synchron IS",
+               "id": "d32ac974bbe1173f5a1b0fd5b63d6578"
+            },
+            {
+               "name": "Daimler AG",
+               "id": "44ca9e606b6576694bdbea223a5937f9"
+            },
+            {
+               "name": "MMI Consult",
+               "id": "d32ac974bbe1173f5a1b0fd5b63d4ee2"
+            },
+            {
+               "name": "Kommunale Versorgungskasse",
+               "id": "a7dcadf7013076d42640b5aa32348bb2"
+            },
+            {
+               "name": "IBM",
+               "id": "3c21dad2434642ac4a48a285163a20ae"
+            },
+            {
+               "name": "eBlueprint",
+               "id": "d32ac974bbe1173f5a1b0fd5b63d1a7b"
+            },
+            {
+               "name": "agentbase AG",
+               "id": "a7dcadf7013076d42640b5aa3234ac28"
+            },
+            {
+               "name": "UWE Roland",
+               "id": "a7dcadf7013076d42640b5aa32349fcd"
+            },
+            {
+               "name": "esciris",
+               "id": "0ead55de6d1ea6a33aae4a5b6b4835ac"
+            },
+            {
+               "name": "TIM Consulting",
+               "id": "d32ac974bbe1173f5a1b0fd5b63d804d"
+            },
+            {
+               "name": "DSV-Gruppe",
+               "id": "a7dcadf7013076d42640b5aa32347c66"
+            },
+            {
+               "name": "EDEKA",
+               "id": "d6c8a8fc916579191382d0e545434943"
+            },
+            {
+               "name": "Igenieurbüro Heins",
+               "id": "d32ac974bbe1173f5a1b0fd5b63d2761"
+            },
+            {
+               "name": "BWI Systeme GmbH",
+               "id": "44ca9e606b6576694bdbea223a594057"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "sys-date",
+            "id": "6e4827e8e902ad7f810cb8c2a52b7063"
+         },
+         "children": []
+      },
+      {
+         "parent": {
+            "name": "product",
+            "id": "4c889914160a14eaf584c13cd80b178d"
+         },
+         "children": [
+            {
+               "name": "WCHChatbot",
+               "id": "efbe6fad-15c7-4a40-9098-9f108eb371fc"
+            },
+            {
+               "name": "IBM Commerce",
+               "id": "464cccb3d4ddc13c9a93ed0253060dd5"
+            },
+            {
+               "name": "IBM Commerce Cloud",
+               "id": "d6c8a8fc916579191382d0e545431e21"
+            },
+            {
+               "name": "Wordpress",
+               "id": "d32ac974bbe1173f5a1b0fd5b63d0b49"
+            },
+            {
+               "name": "Watson Campaign Automation",
+               "id": "447dc244-823a-4ce7-84b0-890fcfe421f2"
+            },
+            {
+               "name": "Sennheiser HD 205",
+               "id": "4c889914160a14eaf584c13cd80bb0d8"
+            },
+            {
+               "name": "IBM Digital Experience",
+               "id": "d955af43946626b22420e562ba1f3162"
+            },
+            {
+               "name": "Watson Content Hub",
+               "id": "6e4827e8e902ad7f810cb8c2a52c2438"
+            },
+            {
+               "name": "IBM RTP",
+               "id": "fc0501a6-27b9-4131-83b4-3cc05705d8c2"
+            },
+            {
+               "name": "Bausparvertrag",
+               "id": ""
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "feature",
+            "id": "fad37b71f9f5935f82913edeb90f78b1"
+         },
+         "children": [
+            {
+               "name": "infrastructure enhancements",
+               "id": "fad37b71f9f5935f82913edeb910079f"
+            },
+            {
+               "name": "contextual content service",
+               "id": "3c21dad2434642ac4a48a285163a2473"
+            },
+            {
+               "name": "critical fixes",
+               "id": "e152fe15128e5128b939da7cab27122e"
+            },
+            {
+               "name": "omnichanel",
+               "id": "f08c09393f588be1e49ab20903092fa4"
+            },
+            {
+               "name": "bulk delete",
+               "id": "6e4827e8e902ad7f810cb8c2a52be620"
+            },
+            {
+               "name": "pick content in palette",
+               "id": "4c889914160a14eaf584c13cd80b96c0"
+            },
+            {
+               "name": "ui",
+               "id": "1374e5d8b4dd44d8f257d88a73512e82"
+            },
+            {
+               "name": "rest api",
+               "id": "e6ef8b49bf960412d31d1d3bd2ab561b"
+            },
+            {
+               "name": "features",
+               "id": "6e4827e8e902ad7f810cb8c2a52c1b57"
+            },
+            {
+               "name": "watson tagging",
+               "id": "6e4827e8e902ad7f810cb8c2a52c230e"
+            },
+            {
+               "name": "federated authentication",
+               "id": "e152fe15128e5128b939da7cab2729e8"
+            },
+            {
+               "name": "asset meta-data",
+               "id": "fad37b71f9f5935f82913edeb9100666"
+            },
+            {
+               "name": "card view",
+               "id": "fad37b71f9f5935f82913edeb90ff0cd"
+            },
+            {
+               "name": "continous delivery",
+               "id": "e122ae67d0597f8a98838921ce3e35e6"
+            },
+            {
+               "name": "content publishing",
+               "id": "e152fe15128e5128b939da7cab2707bc"
+            },
+            {
+               "name": "web app hosting",
+               "id": "3c21dad2434642ac4a48a285163a4c2c"
+            },
+            {
+               "name": "image renditions",
+               "id": "e93eb476-f8f8-4663-bb1d-6546e9a8fd3a"
+            },
+            {
+               "name": "add user",
+               "id": "3c21dad2434642ac4a48a285163a3853"
+            },
+            {
+               "name": "locale for content items",
+               "id": "4c889914160a14eaf584c13cd80b844d"
+            },
+            {
+               "name": "developer info in UI",
+               "id": "3c21dad2434642ac4a48a285163a43b9"
+            },
+            {
+               "name": "asset size increase",
+               "id": "3c21dad2434642ac4a48a285163a334f"
+            },
+            {
+               "name": "logout",
+               "id": "e152fe15128e5128b939da7cab273c3e"
+            },
+            {
+               "name": "viewer role",
+               "id": "4c889914160a14eaf584c13cd80ba66d"
+            },
+            {
+               "name": "sso with digital commerce",
+               "id": "e152fe15128e5128b939da7cab274baa"
+            },
+            {
+               "name": "microsites",
+               "id": "8db75208957eb15dd42544d1603bf243"
+            },
+            {
+               "name": "delivery search",
+               "id": "d955af43946626b22420e562ba1f0e21"
+            },
+            {
+               "name": "cors whitelisting",
+               "id": "fad37b71f9f5935f82913edeb90fff3e"
+            },
+            {
+               "name": "ui enhancements",
+               "id": "4c889914160a14eaf584c13cd80b9c88"
+            },
+            {
+               "name": "auto tagging via api",
+               "id": "e152fe15128e5128b939da7cab270d85"
+            },
+            {
+               "name": "usage",
+               "id": "306406f6-95dc-4e91-b27d-e917b032e2b1"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "chitchat",
+            "id": "f08c09393f588be1e49ab2090302026b"
+         },
+         "children": [
+            {
+               "name": "developer",
+               "id": "464cccb3d4ddc13c9a93ed0253061519"
+            },
+            {
+               "name": "you",
+               "id": "040ea6e1-5ea4-40ef-b968-92e703a3c741"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "producttype",
+            "id": "e152fe15128e5128b939da7cab2689ac"
+         },
+         "children": [
+            {
+               "name": "headless cms",
+               "id": "d955af43946626b22420e562ba1f3eae"
+            },
+            {
+               "name": "headset",
+               "id": "6e4827e8e902ad7f810cb8c2a52c377a"
+            },
+            {
+               "name": "cms",
+               "id": "fad37b71f9f5935f82913edeb9102b29"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "difference",
+            "id": "d32ac974bbe1173f5a1b0fd5b63cf1d2"
+         },
+         "children": [
+            {
+               "name": "different",
+               "id": "a7dcadf7013076d42640b5aa32346c27"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "steuern",
+            "id": "c74a981d-8518-4286-bfdf-ba667e0bd9a4"
+         },
+         "children": [
+            {
+               "name": "KFZ Steuern",
+               "id": "d5df8ac9-de84-474e-9bd6-22e0749418b8"
+            }
+         ]
+      }
+   ],
+   "dialog_nodes": [
+      {
+         "parent": {
+            "name": "dialog_nodes",
+            "id": "efb4eb204170385dab6c56b4db05b958"
+         },
+         "children": [
+            {
+               "name": "FAQ",
+               "id": "ce2d39d2e87c6de66277ee9d4a18d0d2"
+            },
+            {
+               "name": "anything_else",
+               "id": "efb4eb204170385dab6c56b4db060bc8"
+            },
+            {
+               "name": "Change Name",
+               "id": "d6c8a8fc916579191382d0e545543a92"
+            },
+            {
+               "name": "Identify Language",
+               "id": "487b20bb-f006-48fd-aa5c-d0f1cc4d6725"
+            },
+            {
+               "name": "Switch Persona",
+               "id": "ce2d39d2e87c6de66277ee9d4a18d961"
+            },
+            {
+               "name": "Negative Message",
+               "id": "3da58ac3-ec04-4911-8ab6-60ccfbf5485a"
+            },
+            {
+               "name": "Set geolocation",
+               "id": "c318f70605280fdefd04c4302e9b7ccf"
+            },
+            {
+               "name": "You are Welcome",
+               "id": "8db75208957eb15dd42544d160fda028"
+            },
+            {
+               "name": "Introduction",
+               "id": "b84c6bad3cad3ec6ffff23c78e0f1682"
+            },
+            {
+               "name": "Say username",
+               "id": "cd89135d-190c-4961-b44d-2f226cf8906a"
+            },
+            {
+               "name": "Positive Message",
+               "id": "18c30f2c-057d-4ce0-9b70-511281edaeea"
+            },
+            {
+               "name": "Goodybe",
+               "id": "ce2d39d2e87c6de66277ee9d4a18e524"
+            },
+            {
+               "name": "Show Impressions",
+               "id": "f9111212-5961-4dfc-955c-43d7bec38b2d"
+            },
+            {
+               "name": "How to",
+               "id": "d81cb8b6923bb2f2ef3eb20a1fe1ee7d"
+            },
+            {
+               "name": "Developer Sync WCH",
+               "id": "ce9a3da6fd420f106a8d20fa67ec96f3"
+            },
+            {
+               "name": "Welcome",
+               "id": "539daf95-464a-494a-bdf8-35ff523383a9"
+            },
+            {
+               "name": "Keep in touch",
+               "id": "efb4eb204170385dab6c56b4db06237d"
+            },
+            {
+               "name": "Conversation Start",
+               "id": "b84c6bad3cad3ec6ffff23c78e0f5c7a"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Goodybe",
+            "id": "ce2d39d2e87c6de66277ee9d4a18e524"
+         },
+         "children": [
+            {
+               "name": "Demo reset conversation",
+               "id": "2a9b44a5-2c51-4baf-b837-55c4c1de854e"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Introduction",
+            "id": "b84c6bad3cad3ec6ffff23c78e0f1682"
+         },
+         "children": [
+            {
+               "name": "Response Introduction",
+               "id": "ce2d39d2e87c6de66277ee9d4a18f25b"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Keep in touch",
+            "id": "efb4eb204170385dab6c56b4db06237d"
+         },
+         "children": [
+            {
+               "name": "Positive Follow up",
+               "id": "e2e516b0-cc18-4fdc-ab65-8247cee04324"
+            },
+            {
+               "name": "Enter Email",
+               "id": "efb4eb204170385dab6c56b4db0649bf"
+            },
+            {
+               "name": "Negative Follow up",
+               "id": "c8c19725-0b99-494c-bd07-386c01aedb8b"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Switch Persona",
+            "id": "ce2d39d2e87c6de66277ee9d4a18d961"
+         },
+         "children": [
+            {
+               "name": "Do Switch Persona",
+               "id": "b84c6bad3cad3ec6ffff23c78e0f9ce6"
+            },
+            {
+               "name": "Verify Persona",
+               "id": "d81cb8b6923bb2f2ef3eb20a1f15e10d"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "How to",
+            "id": "d81cb8b6923bb2f2ef3eb20a1fe1ee7d"
+         },
+         "children": [
+            {
+               "name": "Do Howto",
+               "id": "ce2d39d2e87c6de66277ee9d4aea2a59"
+            },
+            {
+               "name": "Verify Input 1",
+               "id": "b84c6bad3cad3ec6ffff23c78edfda24"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Welcome",
+            "id": "539daf95-464a-494a-bdf8-35ff523383a9"
+         },
+         "children": [
+            {
+               "name": "Response Welcome",
+               "id": "2662a30f-7eaf-45b5-9ec4-f3e71333011e"
+            },
+            {
+               "name": "Followup User rejects to share his name",
+               "id": "9f97cf62-167f-47d7-87b1-3149af124b6e"
+            },
+            {
+               "name": "Response First Welcome",
+               "id": "62cb7faa-0773-47e5-848e-4e660c4f3e5a"
+            },
+            {
+               "name": "Followup User accepts to share his name",
+               "id": "84b15d6d-452f-4642-8b41-33a15e4366cb"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Show Impressions",
+            "id": "f9111212-5961-4dfc-955c-43d7bec38b2d"
+         },
+         "children": [
+            {
+               "name": "Response Impressions for Event",
+               "id": "84f5cfff-f361-446d-93d5-53bcb5524b2a"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Change Name",
+            "id": "d6c8a8fc916579191382d0e545543a92"
+         },
+         "children": [
+            {
+               "name": "Set Name",
+               "id": "d32ac974bbe1173f5a1b0fd5b64ebe3a"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Identify Language",
+            "id": "487b20bb-f006-48fd-aa5c-d0f1cc4d6725"
+         },
+         "children": [
+            {
+               "name": "Identified Default (EN)",
+               "id": "97c61ef8-9660-47f5-9747-5ad054125961"
+            },
+            {
+               "name": "Identified DE",
+               "id": "7bf9c793-2ac9-457f-bc24-8d58883ea413"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Negative Message",
+            "id": "3da58ac3-ec04-4911-8ab6-60ccfbf5485a"
+         },
+         "children": [
+            {
+               "name": "Missunderstading",
+               "id": "f6b4b4f2-67e2-45b2-afd3-336c99bcd663"
+            },
+            {
+               "name": "Ask for feedback",
+               "id": "12e08736-c18a-44c8-8dcc-f22bd224355a"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "FAQ",
+            "id": "ce2d39d2e87c6de66277ee9d4a18d0d2"
+         },
+         "children": [
+            {
+               "name": "Give Productinformation",
+               "id": "347e5fb1-0547-4afb-9b60-f62c2b9aaa77"
+            },
+            {
+               "name": "Give Featureinformation about Product",
+               "id": "ce2d39d2e87c6de66277ee9d4a18fe1e"
+            },
+            {
+               "name": "Feature to context",
+               "id": "ce2d39d2e87c6de66277ee9d4a19028a"
+            },
+            {
+               "name": "Customer product interest level",
+               "id": "708e1e05-df84-4a33-acd8-75f365ea9004"
+            },
+            {
+               "name": "Give Featureinformation",
+               "id": "b84c6bad3cad3ec6ffff23c78e0f833b"
+            },
+            {
+               "name": "Product to context",
+               "id": "b84c6bad3cad3ec6ffff23c78e0f7727"
+            },
+            {
+               "name": "Loop until",
+               "id": "8db75208957eb15dd42544d160fdc248"
+            },
+            {
+               "name": "Verify Input",
+               "id": "8db75208957eb15dd42544d160fdbcc4"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Set geolocation",
+            "id": "c318f70605280fdefd04c4302e9b7ccf"
+         },
+         "children": [
+            {
+               "name": "Enter Geolocation",
+               "id": "8beddf153d3ed094db767438ac753160"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Say username",
+            "id": "cd89135d-190c-4961-b44d-2f226cf8906a"
+         },
+         "children": [
+            {
+               "name": "Response Username",
+               "id": "9454b8ff-d207-4430-a68c-fc109a758177"
+            },
+            {
+               "name": "User doesnt want to give his username",
+               "id": "201b89d4-2a9b-4cac-94f4-670fee53665c"
+            },
+            {
+               "name": "Response No Username Set",
+               "id": "05a113a6-8b92-412a-80a5-643b4302993d"
+            },
+            {
+               "name": "User wants to give his username",
+               "id": "afdc152e-0f3b-41d9-af46-32275ca122fb"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Verify Input 1",
+            "id": "b84c6bad3cad3ec6ffff23c78edfda24"
+         },
+         "children": [
+            {
+               "name": "Response Howto No Feature",
+               "id": "d81cb8b6923bb2f2ef3eb20a1fe206fa"
+            },
+            {
+               "name": "Response Howto Too Many Products",
+               "id": "ce2d39d2e87c6de66277ee9d4aea46fa"
+            },
+            {
+               "name": "Response Howto No Product",
+               "id": "574f55ebf39a12c6f50b96f043f7458a"
+            },
+            {
+               "name": "Response Howto No Entities",
+               "id": "1a8292531759e8dfc15895bd23d23d8b"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Give Featureinformation",
+            "id": "b84c6bad3cad3ec6ffff23c78e0f833b"
+         },
+         "children": [
+            {
+               "name": "Response Give Featureinformation",
+               "id": "0bfaae88-7b94-4596-9f51-c27ec96bcc6c"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Give Productinformation",
+            "id": "347e5fb1-0547-4afb-9b60-f62c2b9aaa77"
+         },
+         "children": [
+            {
+               "name": "Response Give Productinformation",
+               "id": "e78fe831-48f0-4ba3-892b-b14738cc3b82"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Verify Input",
+            "id": "8db75208957eb15dd42544d160fdbcc4"
+         },
+         "children": [
+            {
+               "name": "Resp Info Missing ProdFeat",
+               "id": "574f55ebf39a12c6f50b96f04325f166"
+            },
+            {
+               "name": "Resp Info No Entities",
+               "id": "b84c6bad3cad3ec6ffff23c78e0fa5d9"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Followup User rejects to share his name",
+            "id": "9f97cf62-167f-47d7-87b1-3149af124b6e"
+         },
+         "children": [
+            {
+               "name": "Response Followup: User rejects to share his name",
+               "id": "4ed768df-20d2-4bdc-a97a-aff03ccf000e"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Demo reset conversation",
+            "id": "2a9b44a5-2c51-4baf-b837-55c4c1de854e"
+         },
+         "children": [
+            {
+               "name": "Response - Jump to Idenify Language",
+               "id": "1790133b-9402-464e-89dc-960a1fcbb0cd"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Enter Email",
+            "id": "efb4eb204170385dab6c56b4db0649bf"
+         },
+         "children": [
+            {
+               "name": "Keep in Touch Thanks",
+               "id": "ce2d39d2e87c6de66277ee9d4a194e64"
+            },
+            {
+               "name": "Verify Email",
+               "id": "d81cb8b6923bb2f2ef3eb20a1f1608d3"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Give Featureinformation about Product",
+            "id": "ce2d39d2e87c6de66277ee9d4a18fe1e"
+         },
+         "children": [
+            {
+               "name": "Response Give Multiple Featureinfo about Product",
+               "id": "efb4eb204170385dab6c56b4db067152"
+            },
+            {
+               "name": "Response Give Single Featureinfo about Product",
+               "id": "8db75208957eb15dd42544d160fe038a"
+            },
+            {
+               "name": "Give details Featureinformation about Product",
+               "id": "44ca9e606b6576694bdbea223a59887c"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Enter Geolocation",
+            "id": "8beddf153d3ed094db767438ac753160"
+         },
+         "children": [
+            {
+               "name": "Try again geolocation",
+               "id": "8beddf153d3ed094db767438ac7538bc"
+            },
+            {
+               "name": "Thank you geolocation",
+               "id": "846d0f6b2b9983f518bb8ec3b8889079"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Set Name",
+            "id": "d32ac974bbe1173f5a1b0fd5b64ebe3a"
+         },
+         "children": [
+            {
+               "name": "Not my name",
+               "id": "4a7ac79e08058703984c194cdbf7cbdd"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Followup User accepts to share his name",
+            "id": "84b15d6d-452f-4642-8b41-33a15e4366cb"
+         },
+         "children": [
+            {
+               "name": "Response Followup: User agrees to share his name",
+               "id": "f5d03dd4-1565-439a-9bf2-6d78e0a75f09"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Customer product interest level",
+            "id": "708e1e05-df84-4a33-acd8-75f365ea9004"
+         },
+         "children": [
+            {
+               "name": "Response Increased Interesst Level",
+               "id": "9da054a1-4ed6-44eb-b7c5-d50dfa9ea0f1"
+            },
+            {
+               "name": "Response Ask for Details",
+               "id": "ea64eb76-121a-4cad-826e-47a04bc6690e"
+            },
+            {
+               "name": "Response Product Changed",
+               "id": "ccb01a5b-4436-4076-b5f7-5930d0736fad"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Do Howto",
+            "id": "ce2d39d2e87c6de66277ee9d4aea2a59"
+         },
+         "children": [
+            {
+               "name": "Response Howto Compare Two Products",
+               "id": "ce2d39d2e87c6de66277ee9d4aea3935"
+            },
+            {
+               "name": "Response Howto Feature Product",
+               "id": "574f55ebf39a12c6f50b96f043f73cba"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Verify Persona",
+            "id": "d81cb8b6923bb2f2ef3eb20a1f15e10d"
+         },
+         "children": [
+            {
+               "name": "Response Persona No Persona",
+               "id": "8db75208957eb15dd42544d160fdeae8"
+            },
+            {
+               "name": "Response Persona Too Many",
+               "id": "ce2d39d2e87c6de66277ee9d4a191e23"
+            },
+            {
+               "name": "Response Persona No Entities",
+               "id": "b84c6bad3cad3ec6ffff23c78e0fb4e1"
+            }
+         ]
+      },
+      {
+         "parent": {
+            "name": "Not my name",
+            "id": "4a7ac79e08058703984c194cdbf7cbdd"
+         },
+         "children": [
+            {
+               "name": "Jump to Set Name",
+               "id": "9fe150ace0bb1393a3f0f485ef21bff3"
+            }
+         ]
+      }
+   ],
+   "actions": [
+      {
+         "parent": {
+            "name": "actions",
+            "id": "8db75208957eb15dd42544d1603c503c"
+         },
+         "children": [
+            {
+               "name": "nousernameyet",
+               "id": "774edaad-e046-44ff-b81d-d126adf3ea16"
+            },
+            {
+               "name": "followupkeepintouch",
+               "id": "8cf2dbe2bce72db71a3a4b96b4527f95"
+            },
+            {
+               "name": "followupusername",
+               "id": "d32ac974bbe1173f5a1b0fd5b64efba4"
+            }
+         ]
+      }
+   ]
+}

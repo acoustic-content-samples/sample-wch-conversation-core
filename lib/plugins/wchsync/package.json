@@ -7,7 +7,7 @@
       "watson-developer-cloud": "^2.39.2"
     },
     "plugin": {
-        "consumes": ["conversation", "wch"],
+        "consumes": ["logging", "conversation", "wch"],
         "provides": ["wchsync"]
     }
 }
