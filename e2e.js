@@ -21,8 +21,12 @@ const {join} = require('path');
 const {createApp, resolveConfig} = require('architect');
 const createAppAsync = promisify(createApp);
 const resolveConfigAsync = promisify(resolveConfig);
+const appSettings = require('./app_settings');
+const architectConfig = require('./lib/conversation-core')(appSettings);
 
-const architectConfig = require('./lib/conversation-core')();
+  process.on('unhandledRejection', (reason, p) => {
+    console.log('Unhandled Rejection at: %o reason: %s', p, reason);
+  });
 
 resolveConfigAsync(architectConfig, __dirname)
 .then(createAppAsync)
@@ -48,7 +52,7 @@ resolveConfigAsync(architectConfig, __dirname)
     botkit: {
       storage: {
         users: {
-          get: (userId, cb) => {console.log('userId', userId); cb(null, {context: initialContext})},
+          get: (userId, cb) => {cb(null, {context: initialContext})},
           save: (user_data, cb) => {initialContext = user_data.context; cb();}
         }
       }
@@ -67,8 +71,11 @@ resolveConfigAsync(architectConfig, __dirname)
     match: [ 'Hello', {index: 0}, {input: 'Hello'} ]
   };
 
+  // app.getService('conversation').get('en').getWorkspace();
+
   app.getService('conversationmiddleware').get('en').interpret(bot, message, () => {
     console.log('Result ', message.watsonData);
+    console.log('Error ',  message.watsonError);
     app.getService('wchconversation').getWchConversationResponses(message.watsonData)
     .then(result => console.log(result.conversationResp.searchResult.documents))
     .catch(console.log);
