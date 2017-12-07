@@ -74,13 +74,15 @@ resolveConfigAsync(architectConfig, __dirname)
   // app.getService('conversation').get('en').getWorkspace();
 
   app.getService('conversationmiddleware').get('en').interpret(bot, message, () => {
-    app.getService('conversationmiddleware').get('en').interpret(bot, message, () => {
-        console.log('Result ', message.watsonData);
-        console.log('Error ',  message.watsonError);
-        app.getService('wchconversation').getWchConversationResponses(message.watsonData)
-        .then(result => console.log(result.conversationResp.searchResult.documents))
-        .catch(console.log);
-    });
+      app.getService('conversationmiddleware').get('en').interpret(bot, message, () => {
+        app.getService('conversationmiddleware').get('en').interpret(bot, message, () => {
+            console.log('Result ', message.watsonData);
+            console.log('Error ',  message.watsonError);
+            app.getService('wchconversation').getWchConversationResponses(message.watsonData)
+            .then(result => console.log(result.conversationResp.searchResult.documents))
+            .catch(console.log);
+        });
+      });
   });
 
 
