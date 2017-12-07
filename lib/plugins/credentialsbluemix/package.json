@@ -1,0 +1,11 @@
+{
+    "name": "credentialsbluemix",
+    "version": "0.0.1",
+    "main": "credentials.js",
+    "private": true,
+    "dependencies": {},
+    "plugin": {
+        "consumes": ["logging"],
+        "provides": ["credentials"]
+    }
+}
