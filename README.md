@@ -7,7 +7,76 @@ In detail this module contains all necessary server side logic to use the watson
 
 If you fork this repository and want to do end2end tests make sure to run the ```npm run manageCreds``` command. This will setup a local pair of credentials encrypted with your RSA key. If you don't have a RSA key yet follow [these instructions from Github.][generatesshurl]
 
+# Get started
+
+Using this module is pretty easy. The only thing you have to do is put your credentials in place. If you want to run it locally either write your own credentials plugin to fetch your credentials from wherever they are. Or execute the npm command `npm run setupCredentials`.
+
+Using the module is as easy as this:
+```javascript
+  const {promisify} = require('util');
+  const {dirname} = require('path');
+  const {createApp, resolveConfig, loadConfig} = require('architect');
+  const createAppAsync = promisify(createApp);
+  const resolveConfigAsync = promisify(resolveConfig);
+  const loadConfigAsync = promisify(loadConfig);
+
+  const appSettings = {
+    "generalSettings": {
+      "defaultLanguage": "en",
+      "supportedLanguages": [
+       "de",
+       "en"
+      ],
+      "developermode": true,
+      "confLvl": "0.7",
+      "credentialsStore": {
+       "path": "./dch_vcap.json",
+       "encrypted": true,
+       "pathPrivKey": "C:\\Users\\SvenSterbling\\.ssh\\id_rsa"
+      }
+     },
+     "conversationMiddleware": {
+      "config": [
+       {
+        "workspaceId": "9db75ce4-a059-4f53-988d-de239eed10a0",
+        "locale": "en"
+       }
+      ]
+     }
+  };
+
+  // This is the config - you can make changes to the settings either through
+  // modifying your app_settings.json or changing the architectConfig directly
+  const architectConfig = require('../lib/conversation-core')(appSettings);
+  const coreBase = dirname(require.resolve('../'));
+
+  resolveConfigAsync(architectConfig, coreBase)
+  .then(createAppAsync)
+  .then(wchcore => {
+    // Access to your credentials
+    const env = wchcore.getService('env');
+    // Access to your Watson Conversation Service Instances
+    const conversation = wchcore.getService('conversation');
+    // Access to Watson Content Hub
+    const wchconversation =  wchcore.getService('wchconversation');
+
+    conversation.get('en').sendMessage({message: 'Hello World', context: {}})
+    .then(watsonData => wchconversation.getWchConversationResponses(watsonData))
+    .then(({conversationResp, locationResp, followupResp}) => {
+      // The "general" answer is in the conversationResp
+      // If you have a location specific answer use the locationResp instead of the conversationResp
+      // If there are one time actions like asking for the username you have a followupResp as well as a conversationResp
+    })
+    .catch(err => {
+      console.log('Error ', err);
+    });
+
+  });
+```
+
 # Plugins
+
+The following list give a short overview over all used plugins in the wch-conversation-core. This is mostly interessting if you want to create custom plugins to alter the behavior.
 
 ## clienttype
 
