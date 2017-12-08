@@ -1,6 +1,6 @@
 {
   "id": "60c780ff-a408-4a07-a07f-8318f5a70c16",
-  "rev": "22-c14bfafb97b7308f3cdb94bce5f00cd7",
+  "rev": "23-fcdb6af8324b2ad48c27dbade921bb90",
   "name": "ChatActionButton",
   "classification": "content-type",
   "path": "/Ch/ChatActionButton",
@@ -13,7 +13,7 @@
   "created": "2017-08-02T13:49:10.230Z",
   "lastModifier": "Watson Chatbot",
   "lastModifierId": "57ce3b2b-ae3c-493d-aef0-046951ac9086",
-  "lastModified": "2017-12-08T15:09:30.503Z",
+  "lastModified": "2017-12-08T15:24:45.550Z",
   "status": "ready",
   "tags": [
     "WCHChatbot"

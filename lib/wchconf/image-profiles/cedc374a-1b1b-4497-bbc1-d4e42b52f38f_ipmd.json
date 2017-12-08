@@ -1,6 +1,6 @@
 {
   "id": "cedc374a-1b1b-4497-bbc1-d4e42b52f38f",
-  "rev": "8-dbc9cc01e6a3c8e6165ea77a13b57657",
+  "rev": "9-6c36b2b6bcfd20d5e82408015dad465f",
   "name": "ChatThumbnail",
   "classification": "image-profile",
   "description": "WCHChatbot",
@@ -9,7 +9,7 @@
   "created": "2017-05-10T09:17:39.089Z",
   "lastModifier": "Watson Chatbot",
   "lastModifierId": "57ce3b2b-ae3c-493d-aef0-046951ac9086",
-  "lastModified": "2017-12-08T15:09:27.048Z",
+  "lastModified": "2017-12-08T15:24:41.597Z",
   "dimensions": [
     {
       "label": "thumb",

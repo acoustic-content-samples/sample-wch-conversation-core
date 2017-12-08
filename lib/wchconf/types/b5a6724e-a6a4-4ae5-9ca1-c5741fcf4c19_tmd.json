@@ -1,6 +1,6 @@
 {
   "id": "b5a6724e-a6a4-4ae5-9ca1-c5741fcf4c19",
-  "rev": "58-75ae8e197d83a93d951c23b0c8d70558",
+  "rev": "59-50a5890901f18336bbc33c803f3f1487",
   "name": "ChatAttachment",
   "classification": "content-type",
   "path": "/Ch/ChatAttachment",
@@ -17,7 +17,7 @@
   "created": "2017-05-10T09:08:24.339Z",
   "lastModifier": "Watson Chatbot",
   "lastModifierId": "57ce3b2b-ae3c-493d-aef0-046951ac9086",
-  "lastModified": "2017-12-08T15:09:30.505Z",
+  "lastModified": "2017-12-08T15:24:45.573Z",
   "status": "ready",
   "tags": [
     "WCHChatbot"

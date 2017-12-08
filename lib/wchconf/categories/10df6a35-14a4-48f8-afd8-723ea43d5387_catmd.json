@@ -1,6 +1,6 @@
 {
   "id": "10df6a35-14a4-48f8-afd8-723ea43d5387",
-  "rev": "4-49bbdab17e12e937fa7c74a9c2f9069f",
+  "rev": "5-cb0949fd8363313f4e7f47ecd7861d33",
   "name": "slack",
   "creatorId": "57ce3b2b-ae3c-493d-aef0-046951ac9086",
   "creator": "Watson Chatbot",
@@ -26,5 +26,5 @@
     }
   },
   "created": "2017-12-08T15:04:56.904Z",
-  "lastModified": "2017-12-08T15:09:28.303Z"
+  "lastModified": "2017-12-08T15:24:42.525Z"
 }
