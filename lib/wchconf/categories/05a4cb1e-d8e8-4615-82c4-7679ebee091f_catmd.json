@@ -1,0 +1,22 @@
+{
+  "id": "05a4cb1e-d8e8-4615-82c4-7679ebee091f",
+  "rev": "4-110f6fb265c73188e9bcc0223efd0877",
+  "name": "chatbotpersona",
+  "creatorId": "57ce3b2b-ae3c-493d-aef0-046951ac9086",
+  "creator": "Watson Chatbot",
+  "description": "WCHChatbot",
+  "classification": "taxonomy",
+  "firstClassFor": [
+    ""
+  ],
+  "namePath": [
+    "chatbotpersona"
+  ],
+  "links": {
+    "self": {
+      "href": "/authoring/v1/categories/05a4cb1e-d8e8-4615-82c4-7679ebee091f"
+    }
+  },
+  "created": "2017-12-08T15:04:54.201Z",
+  "lastModified": "2017-12-08T15:09:28.463Z"
+}

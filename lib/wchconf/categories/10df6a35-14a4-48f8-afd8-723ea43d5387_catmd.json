@@ -1,0 +1,30 @@
+{
+  "id": "10df6a35-14a4-48f8-afd8-723ea43d5387",
+  "rev": "4-49bbdab17e12e937fa7c74a9c2f9069f",
+  "name": "slack",
+  "creatorId": "57ce3b2b-ae3c-493d-aef0-046951ac9086",
+  "creator": "Watson Chatbot",
+  "classification": "category",
+  "taxonomy": "7585f255-cdb8-44f9-bd0e-f583b69d57b8",
+  "parent": "7585f255-cdb8-44f9-bd0e-f583b69d57b8",
+  "ancestorIds": [
+    "7585f255-cdb8-44f9-bd0e-f583b69d57b8"
+  ],
+  "namePath": [
+    "clienttype",
+    "slack"
+  ],
+  "links": {
+    "taxonomy": {
+      "href": "/authoring/v1/categories/7585f255-cdb8-44f9-bd0e-f583b69d57b8"
+    },
+    "self": {
+      "href": "/authoring/v1/categories/10df6a35-14a4-48f8-afd8-723ea43d5387"
+    },
+    "parent": {
+      "href": "/authoring/v1/categories/7585f255-cdb8-44f9-bd0e-f583b69d57b8"
+    }
+  },
+  "created": "2017-12-08T15:04:56.904Z",
+  "lastModified": "2017-12-08T15:09:28.303Z"
+}

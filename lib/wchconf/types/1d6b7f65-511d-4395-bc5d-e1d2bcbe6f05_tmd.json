@@ -1,0 +1,109 @@
+{
+  "id": "1d6b7f65-511d-4395-bc5d-e1d2bcbe6f05",
+  "rev": "17-1d67149c7fc2fa6c4a2c0c3d74f49116",
+  "name": "ChatOutputText",
+  "classification": "content-type",
+  "path": "/Ch/ChatOutputText",
+  "kind": [
+    "standalone"
+  ],
+  "description": "Type for general textoutput for the chatbot solution based on WCH. Use the node taxonomy to specify for which dialog nodes this text can be used.",
+  "creator": "Watson Chatbot",
+  "creatorId": "0f57fcf9-7433-481f-9b56-241b8b05d86e",
+  "created": "2017-05-04T11:48:19.177Z",
+  "lastModifier": "Watson Chatbot",
+  "lastModifierId": "0f57fcf9-7433-481f-9b56-241b8b05d86e",
+  "lastModified": "2017-12-08T12:30:44.432Z",
+  "status": "ready",
+  "tags": [
+    "WCHChatbot"
+  ],
+  "elements": [
+    {
+      "elementType": "text",
+      "label": "Text",
+      "key": "text",
+      "required": true,
+      "displayType": "multiLine",
+      "displayHeight": 5,
+      "allowMultipleValues": true,
+      "minimumValues": 1,
+      "helpText": "This is the \"default\" output text which will always be used as an answer. It's normally the first text to show. \n\nAvoid long text for chat answers! Make sure that your text is precise and short."
+    },
+    {
+      "elementType": "toggle",
+      "label": "Attachments",
+      "key": "attachments",
+      "statement": "Response with attachments",
+      "helpText": "Toggle to enable or disable attachments. If set to false no attachments will be used in the answer to the customer."
+    },
+    {
+      "elementType": "text",
+      "label": "AttachmentQuery",
+      "key": "attachmentquery",
+      "helpText": "Advanced input field to define your own WCH search query to match against one or multiple attachments. Be aware that the result list is automatically reduced to a max. of 10 elements (that's the limit for Facebook attachments),\n\nThe preferred method is to use the content reference field below."
+    },
+    {
+      "elementType": "reference",
+      "label": "Attachment",
+      "key": "attachment",
+      "restrictTypes": [
+        {
+          "id": "b5a6724e-a6a4-4ae5-9ca1-c5741fcf4c19",
+          "name": "ChatAttachment"
+        }
+      ],
+      "allowMultipleValues": true,
+      "minimumValues": 0,
+      "maximumValues": 10,
+      "required": false,
+      "helpText": "Reference attachments which will be shown in the selected order to the user."
+    },
+    {
+      "elementType": "category",
+      "label": "Current Dialog State (Node)",
+      "key": "node",
+      "helpText": "Use this element to reference the acutal context your answer should be used. This maps dynamically to a specific dialog state/node as defined in the conversation state.",
+      "required": true,
+      "restrictedParents": [
+        "5adf738c-4619-442f-acb1-efac7852b14e"
+      ]
+    },
+    {
+      "elementType": "category",
+      "label": "Dialog Response (Nodename)",
+      "key": "dialogResponseResponseName",
+      "restrictedParents": [
+        "5adf738c-4619-442f-acb1-efac7852b14e"
+      ]
+    },
+    {
+      "elementType": "category",
+      "label": "ChatbotPersona",
+      "key": "persona",
+      "required": false,
+      "restrictedParents": [
+        "05a4cb1e-d8e8-4615-82c4-7679ebee091f"
+      ]
+    },
+    {
+      "elementType": "category",
+      "label": "Filter",
+      "key": "filter"
+    },
+    {
+      "elementType": "category",
+      "label": "Clienttype",
+      "key": "clienttype",
+      "restrictedParents": [
+        "7585f255-cdb8-44f9-bd0e-f583b69d57b8"
+      ]
+    },
+    {
+      "elementType": "location",
+      "label": "Location",
+      "key": "location",
+      "helpText": "Give a location where this content item should be shown. Good for regional marketing campaigns."
+    }
+  ]
+}

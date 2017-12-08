@@ -1,0 +1,21 @@
+{
+  "id": "203ff451-9175-465e-950c-db708e1d1273",
+  "rev": "9-6455d41df1f89e14327c8372ec7198a9",
+  "name": "ChatIcons",
+  "classification": "image-profile",
+  "description": "WCHChatbot",
+  "creator": "Watson Chatbot",
+  "creatorId": "57ce3b2b-ae3c-493d-aef0-046951ac9086",
+  "created": "2017-05-10T09:17:11.967Z",
+  "lastModifier": "Watson Chatbot",
+  "lastModifierId": "57ce3b2b-ae3c-493d-aef0-046951ac9086",
+  "lastModified": "2017-12-08T15:09:27.042Z",
+  "dimensions": [
+    {
+      "label": "icon",
+      "key": "icon",
+      "width": 16,
+      "height": 16
+    }
+  ]
+}

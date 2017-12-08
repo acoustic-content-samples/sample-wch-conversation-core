@@ -59,9 +59,10 @@ const cfenv = require('cfenv');
 const program = require('commander');
 const prompt = require('prompt');
 const homedir = require('os').homedir;
+const { spawn } = require('child_process');
 const cwd = process.cwd;
 
-const credentials = require('wch-conversation-core/lib/plugins/credentials');
+const credentials = require('./lib/plugins/credentials');
 
 const settingsPath = path.join(cwd(), 'app_settings.json');
 
@@ -72,6 +73,7 @@ program
   .option('-a, --app-settings [settingsPath]', 'Path to app settings json', settingsPath)
   .option('-k, --key [privateKey]', 'Path to private RSA key', path.join(homedir(), '.ssh', 'id_rsa'))
   .option('-S, --sample-setup', 'Trigger sample creation after credentials setup');
+
 
 program
  .command('manage')
@@ -98,6 +100,70 @@ program
       process.exit(0);
     })
     .catch(console.log);
+  });
+
+
+
+program
+ .command('push')
+ .option('-w, --wch', 'Push Content Model for Chatbot to WCH')
+ .description('Create or update the given credentials to run the app locally. Will update your app settings based on your decisions.')
+ .action(() => {
+    checkForAppSettings(path.resolve(program.appSettings))
+    .then(initGeneralSettings)
+    .then(checkForCredentials)
+    .then(initCredentials)
+    .then(parameters => {
+      return new Promise((resolve, reject) => {
+        let {setPath, appSettings, credsExist, credsPath, appCredentials, defaultCredsService} = parameters;
+        if (!appCredentials['user-provided']) {
+          console.log('It seems there are no credentials set for WCH.');
+          console.log('Please run: npm run manageCreds first!');
+          return process.exit(1);
+        }
+        let wchCreds = appCredentials['user-provided'].find(ele => ele.name === 'wch_config');
+        let {username, password, apiurl} = wchCreds.credentials;
+        let pushArgs = [
+          path.join(__dirname, 'lib', 'wchconf', 'wchtools.fork.js'),
+          "push", "--verbose", "-I", "-f", "--all-authoring",
+          "--user", username,
+          "--password", password,
+          "--url", apiurl,
+          "--dir", path.join(__dirname, 'lib', 'wchconf')
+        ];
+
+        try {
+         // spawn the process
+          const childProcess = spawn(process.execPath, pushArgs, {
+              'cwd': cwd()
+          });
+          // attach
+          childProcess.stdout.on('data', data => console.log('data ', data.toString('utf-8')));
+          childProcess.stderr.on('data', data => console.log('data ', data.toString('utf-8')));
+          // end
+          childProcess.on('close', code => (code === 0) ? resolve() : reject(code));
+          childProcess.on('error', err =>reject(err));
+        } catch (err) {
+          reject(err);
+        }
+      });
+    })
+    .then(() => {
+      console.log('\n\n');
+      console.log('<<<<<<<<<<<<<<<<<<<<<<');
+      console.log('| All done. Enjoy ;) |');
+      console.log('>>>>>>>>>>>>>>>>>>>>>>');
+      process.exit(0);
+    })
+    .catch(err => {
+      console.log('\n\n');
+      console.log('<<<<<<<<<<<<<<<<<<<<<<');
+      console.log('| Oh no an Error :(  |');
+      console.log('>>>>>>>>>>>>>>>>>>>>>>');
+
+      console.log(err);
+      process.exit(1);
+    });
   });
 
 program.parse(process.argv);
@@ -265,7 +331,7 @@ function initCredentials (parameters) {
               credsPath: credsPath,
               readOnly: false
             },
-            null,
+            { logging: () => ({methodEntry: (name, value) => value, methodExit: (name, value) => value, debug: (name, value) => value }) },
             (_this, credentialsService) => {
               let defaultCredsService = credentialsService.credentials;
               defaultCredsService
@@ -317,7 +383,7 @@ function initCredentials (parameters) {
               credsPath: credsPath,
               readOnly: false
             },
-            null,
+            { logging: () => ({methodEntry: (name, value) => value, methodExit: (name, value) => value, debug: (name, value) => value }) },
             (_this, credentialsService) => {
               let defaultCredsService = credentialsService.credentials;
               resolve(Object.assign(parameters, {appCredentials: {}, defaultCredsService}));

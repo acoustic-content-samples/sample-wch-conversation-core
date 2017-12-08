@@ -45,6 +45,8 @@ jspm_packages
 *dch_vcap.json
 
 .wchtoolshashes
+wchtools-api.log
+wchtools-cli.log
 
 scan_intergration_server.xml
 license_integration_server.csv

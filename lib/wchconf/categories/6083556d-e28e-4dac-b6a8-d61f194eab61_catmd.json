@@ -1,0 +1,30 @@
+{
+  "id": "6083556d-e28e-4dac-b6a8-d61f194eab61",
+  "rev": "4-7c267b70ad84619425063a4df248cedf",
+  "name": "raspberry",
+  "creatorId": "57ce3b2b-ae3c-493d-aef0-046951ac9086",
+  "creator": "Watson Chatbot",
+  "classification": "category",
+  "taxonomy": "7585f255-cdb8-44f9-bd0e-f583b69d57b8",
+  "parent": "7585f255-cdb8-44f9-bd0e-f583b69d57b8",
+  "ancestorIds": [
+    "7585f255-cdb8-44f9-bd0e-f583b69d57b8"
+  ],
+  "namePath": [
+    "clienttype",
+    "raspberry"
+  ],
+  "links": {
+    "taxonomy": {
+      "href": "/authoring/v1/categories/7585f255-cdb8-44f9-bd0e-f583b69d57b8"
+    },
+    "self": {
+      "href": "/authoring/v1/categories/6083556d-e28e-4dac-b6a8-d61f194eab61"
+    },
+    "parent": {
+      "href": "/authoring/v1/categories/7585f255-cdb8-44f9-bd0e-f583b69d57b8"
+    }
+  },
+  "created": "2017-12-08T15:04:56.069Z",
+  "lastModified": "2017-12-08T15:09:29.286Z"
+}

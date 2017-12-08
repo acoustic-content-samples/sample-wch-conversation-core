@@ -1,0 +1,89 @@
+{
+  "id": "f9147be3-09bd-47a1-94b9-22e5e4cac6c1",
+  "rev": "10-946d63ac211d0fa154ae20f027a095c8",
+  "name": "ChatFollowup",
+  "classification": "content-type",
+  "path": "/Ch/ChatFollowup",
+  "kind": [
+    "standalone"
+  ],
+  "description": "",
+  "creator": "Watson Chatbot",
+  "creatorId": "0f57fcf9-7433-481f-9b56-241b8b05d86e",
+  "created": "2017-05-12T16:33:06.529Z",
+  "lastModifier": "Watson Chatbot",
+  "lastModifierId": "0f57fcf9-7433-481f-9b56-241b8b05d86e",
+  "lastModified": "2017-12-08T12:30:44.478Z",
+  "status": "ready",
+  "tags": [
+    "WCHChatbot"
+  ],
+  "elements": [
+    {
+      "elementType": "text",
+      "label": "Text",
+      "key": "text",
+      "required": true,
+      "displayType": "multiLine",
+      "displayHeight": 5,
+      "allowMultipleValues": true,
+      "minimumValues": 1
+    },
+    {
+      "elementType": "toggle",
+      "label": "Attachments",
+      "key": "attachments",
+      "statement": "Response with attachments"
+    },
+    {
+      "elementType": "text",
+      "label": "AttachmentQuery",
+      "key": "attachmentquery"
+    },
+    {
+      "elementType": "reference",
+      "label": "Attachment",
+      "key": "attachment",
+      "restrictTypes": [
+        {
+          "id": "b5a6724e-a6a4-4ae5-9ca1-c5741fcf4c19",
+          "name": "ChatAttachment"
+        }
+      ],
+      "allowMultipleValues": true,
+      "minimumValues": 0,
+      "maximumValues": 3,
+      "required": false
+    },
+    {
+      "elementType": "category",
+      "label": "Action",
+      "key": "action",
+      "required": true,
+      "restrictedParents": [
+        "46a99181-1273-44aa-b528-6a0fb19d694c"
+      ]
+    },
+    {
+      "elementType": "category",
+      "label": "Chatbot Persona",
+      "key": "persona",
+      "restrictedParents": [
+        "05a4cb1e-d8e8-4615-82c4-7679ebee091f"
+      ]
+    },
+    {
+      "elementType": "category",
+      "label": "Clienttype",
+      "key": "clienttype",
+      "restrictedParents": [
+        "7585f255-cdb8-44f9-bd0e-f583b69d57b8"
+      ]
+    },
+    {
+      "elementType": "location",
+      "label": "Location",
+      "key": "location"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "9a5c2dce-5897-4b19-806e-bee98d491cba",
+  "rev": "4-e3eac3885925c8411b422e3dd794938c",
+  "name": "unsupported",
+  "creatorId": "57ce3b2b-ae3c-493d-aef0-046951ac9086",
+  "creator": "Watson Chatbot",
+  "classification": "category",
+  "taxonomy": "7585f255-cdb8-44f9-bd0e-f583b69d57b8",
+  "parent": "7585f255-cdb8-44f9-bd0e-f583b69d57b8",
+  "ancestorIds": [
+    "7585f255-cdb8-44f9-bd0e-f583b69d57b8"
+  ],
+  "namePath": [
+    "clienttype",
+    "unsupported"
+  ],
+  "links": {
+    "taxonomy": {
+      "href": "/authoring/v1/categories/7585f255-cdb8-44f9-bd0e-f583b69d57b8"
+    },
+    "self": {
+      "href": "/authoring/v1/categories/9a5c2dce-5897-4b19-806e-bee98d491cba"
+    },
+    "parent": {
+      "href": "/authoring/v1/categories/7585f255-cdb8-44f9-bd0e-f583b69d57b8"
+    }
+  },
+  "created": "2017-12-08T15:04:55.866Z",
+  "lastModified": "2017-12-08T15:09:29.103Z"
+}
