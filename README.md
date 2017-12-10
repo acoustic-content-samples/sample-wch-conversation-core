@@ -48,7 +48,7 @@ Using the module is as easy as this:
   // This is the config - you can make changes to the settings either by using the 
   // generated app_settings.json (when using the manageCreds command or changing the architectConfig directly
   const architectConfig = require('conversation-core')(appSettings);
-  const coreBase = dirname(require.resolve('../'));
+  const coreBase = dirname(require.resolve('conversation-core'));
 
   resolveConfigAsync(architectConfig, coreBase)
   .then(createAppAsync)
