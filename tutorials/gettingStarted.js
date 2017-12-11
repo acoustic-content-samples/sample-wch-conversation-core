@@ -67,6 +67,8 @@ resolveConfigAsync(architectConfig, coreBase)
   .then(watsonData => wchconversation.getWchConversationResponses(watsonData))
   .then(({conversationResp, locationResp, followupResp}) => {
     // The "general" answer is in the conversationResp
+    let text = conversationResp.searchResult.documents[0].document.elements.text.values[0]
+    console.log('The textual response from content hub is: ', text);
     // If you have a location specific answer use the locationResp instead of the conversationResp
     // If there are one time actions like asking for the username you have a followupResp as well as a conversationResp
   })

@@ -9,7 +9,7 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 
 # Get started
 
-Using this module is pretty easy. The only thing you have to do is put your credentials in place. If you want to run it locally either write your own credentials plugin to fetch your credentials from wherever they are. Or execute the npm command `npm run setupCredentials`.
+Using this module is pretty easy. The only thing you have to do is put your credentials in place. If you want to run it locally either write your own credentials plugin to fetch your credentials from wherever they are. Or execute the npm command `npm run setupCredentials` to use the default credentials management.
 
 Using the module is as easy as this:
 ```javascript
@@ -58,12 +58,13 @@ Using the module is as easy as this:
     // Access to Watson Content Hub
     const wchconversation =  wchcore.getService('wchconversation');
 
-    conversation.get('en').sendMessage({message: 'Hello World', context: {}})
+    conversation.get('en').sendMessage({message: 'Hello', context: {}})
     .then(watsonData => wchconversation.getWchConversationResponses(watsonData))
     .then(({conversationResp, locationResp, followupResp}) => {
       // The "general" answer is in the conversationResp
       // If you have a location specific answer use the locationResp instead of the conversationResp
       // If there are one time actions like asking for the username you have a followupResp as well as a conversationResp
+      console.log(conversationResp.searchResult.documents[0].document.elements.text.values[0]) // => World
     })
     .catch(err => {
       console.log('Error ', err);

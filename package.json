@@ -9,6 +9,9 @@
     "manageCreds": "node ./credentials.js manage",
     "pushWCH": "node ./credentials.js push --wch"
   },
+  "bin": {
+    "credentials": "./credentials.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
