@@ -51,6 +51,7 @@
   "enabled": false
  },
  "conversationMiddleware": {
+  "serviceName": "wch-conversation",
   "config": [
    {
     "workspaceId": "9db75ce4-a059-4f53-988d-de239eed10a0",
