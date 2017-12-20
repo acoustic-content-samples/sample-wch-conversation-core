@@ -3,21 +3,21 @@
   "version": "0.2.10",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "chatcreds": ".bin/credentials"
+  },
   "scripts": {
     "test": "mocha lib/**/**.spec.js",
     "eslint": "gulp eslint",
-    "manageCreds": "node ./credentials.js manage -A",
-    "manageChannels": "node ./credentials.js manage -C",
-    "manageServices": "node ./credentials.js manage -S",
-    "pushWCH": "node ./credentials.js push --wch",
-    "pushWCS": "node ./credentials.js push --wcs"
+    "manageCreds": ".bin/credentials manage -A",
+    "manageChannels": ".bin/credentials manage -C",
+    "manageServices": ".bin/credentials manage -S",
+    "pushWCH": ".bin/credentials push --wch",
+    "pushWCS": ".bin/credentials push --wcs"
   },
-  "bin": {
-    "credentials": "./credentials.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["core", "chatbot", "watson content hub", "watson conversation service", "bot", "messenger"],
+  "author": "Sven Sterbling <sterbling@de.ibm.com>",
+  "license": "Apache-2.0",
   "dependencies": {
     "@google/maps": "^0.4.3",
     "architect": "^0.1.13",
