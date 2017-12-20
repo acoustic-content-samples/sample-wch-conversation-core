@@ -1,6 +1,6 @@
 {
   "name": "wch-conversation-core",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -15,7 +15,14 @@
     "pushWCH": ".bin/credentials push --wch",
     "pushWCS": ".bin/credentials push --wcs"
   },
-  "keywords": ["core", "chatbot", "watson content hub", "watson conversation service", "bot", "messenger"],
+  "keywords": [
+    "core",
+    "chatbot",
+    "watson content hub",
+    "watson conversation service",
+    "bot",
+    "messenger"
+  ],
   "author": "Sven Sterbling <sterbling@de.ibm.com>",
   "license": "Apache-2.0",
   "dependencies": {
