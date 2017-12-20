@@ -6,8 +6,11 @@
   "scripts": {
     "test": "mocha lib/**/**.spec.js",
     "eslint": "gulp eslint",
-    "manageCreds": "node ./credentials.js manage",
-    "pushWCH": "node ./credentials.js push --wch"
+    "manageCreds": "node ./credentials.js manage -A",
+    "manageChannels": "node ./credentials.js manage -C",
+    "manageServices": "node ./credentials.js manage -S",
+    "pushWCH": "node ./credentials.js push --wch",
+    "pushWCS": "node ./credentials.js push --wcs"
   },
   "bin": {
     "credentials": "./credentials.js"

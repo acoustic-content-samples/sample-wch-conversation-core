@@ -12,7 +12,7 @@
   "credentialsStore": {
    "path": "./dch_vcap.json",
    "encrypted": true,
-   "pathPrivKey": "C:\\Users\\SvenSterbling\\.ssh\\id_rsa"
+   "pathPrivKey": "/Users/sterbling@de.ibm.com/.ssh/id_rsa"
   },
   "debugToFile": false
  },
@@ -22,8 +22,7 @@
   },
   "fb": {
    "enabled": true,
-   "startApp": true,
-   "startTestBot": true,
+   "chatpersona": "mrwatson",
    "debug": false
   },
   "slack": {
@@ -31,11 +30,20 @@
    "startApp": true,
    "startTestBot": true,
    "debug": false,
+   "chatpersona": "mrwatson",
    "chatboticons": {
     "mrwatson": "https://my6.digitalexperience.ibm.com/8f032d79-a358-4825-af1b-d6cc169692c6/dxdam/8c/8c290073-6365-4400-8dce-40e286667e50/MrWatson.PNG",
     "profcontent": "https://my6.digitalexperience.ibm.com/8f032d79-a358-4825-af1b-d6cc169692c6/dxdam/ae/ae0a2253-d8e2-48e0-92d3-481cc8468ed2/ProfContent.PNG",
     "drhub": "https://my6.digitalexperience.ibm.com/8f032d79-a358-4825-af1b-d6cc169692c6/dxdam/df/df0b0e06-40c4-45a1-8d93-4b0fe45679fe/DrHub.PNG"
    }
+  },
+  "rasp": {
+   "enabled": true,
+   "debug": false
+  },
+  "rest": {
+   "enabled": true,
+   "debug": false
   }
  },
  "toneAnalyzerService": {
