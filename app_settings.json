@@ -21,14 +21,14 @@
    "enabled": false
   },
   "fb": {
-   "enabled": true,
+   "enabled": false,
    "chatpersona": "mrwatson",
    "debug": false
   },
   "slack": {
-   "enabled": true,
-   "startApp": true,
-   "startTestBot": true,
+   "enabled": false,
+   "startApp": false,
+   "startTestBot": false,
    "debug": false,
    "chatpersona": "mrwatson",
    "chatboticons": {
@@ -50,9 +50,12 @@
   "enabled": false
  },
  "languageTranslationService": {
-  "enabled": true
+  "enabled": false
  },
  "geolocationService": {
+  "enabled": false
+ },
+ "wchService": {
   "enabled": true
  },
  "dbService": {
