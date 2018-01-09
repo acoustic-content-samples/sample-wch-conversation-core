@@ -1,7 +1,7 @@
 # WCH Conversation Core
 This package contains the essential functionality to create a chatbot based on the combination of the [Watson Conversation Service][watsonconversationurl] and [Watson Content Hub][watsoncontenthuburl]. Each essential part is available as a plugin. The plugin structure is based on the [architect framework][architecturl].
 
-In detail this module contains all necessary server side logic to use the watson conversation service with any channel and framework you want. Additionally it provides an easy configuration to fetch the response the users sees from Watson Content Hub. This allows you to manage the responses across all channels in an easy to use User Interface provided by Watson Content Hub. Additionally you're not limited to text answers only. There is no limitation on rich media like images, pdfs, files, author information, ...
+In detail, this module contains all necessary server side logic to use the watson conversation service with any channel and framework you want. Additionally it provides an easy configuration to fetch the response the users sees from Watson Content Hub. This allows you to manage the responses across all channels in an easy to use User Interface provided by Watson Content Hub. You're not limited to text answers only. There is no limitation on rich media like images, pdfs, files, author information, ...
 
 **Note:** This module is part of a tutorial showing how to implement a chatbot solution based on a CMS like [Watson Content Hub][watsoncontenthuburl]. So currently it's discouraged to use this module as is for production use cases without any modifications.
 
@@ -78,17 +78,32 @@ Using the module is as easy as this:
 
 ## How to connect your conversation with content from Watson Content Hub
 
-Before you can create content for your chatbot you first have to follow a few steps to get started. First we will create & upload the content model to your WCH tentant through the command `npm run pushWCH`. Next we will trigger a syncronization job by running `npm run sync`. Whenever you make changes to your conversation just execute this command again.
+This module is configured to fetch the content shown to users from WCH. This is based on the concept of syncing all `intents`, `entities`, `dialog_nodes` and `actions` from the conversation service to WCH. In order to trigger a sync run `npm run sync`. This should do the job and afterwards you should see your changes in the taxonomy section of WCH. (**Important:** Whenever you make changes in your conversation workspace execute this command again)
 
-**Note:** Make sure that your credentials and application settings are initalized before you execute the commands. (`npm run manageServices`) It's also recommended to enable developermode while creating your content.
+Furthermore it's recommended to use the inital content model and alter the structure afterwards. Import the sample content model through the command `npm run pushWCH`
+ we will create & upload the content model to your WCH tentant through the command `npm run pushWCH`. Next we will trigger a syncronization job by running `npm run sync`.
+
+**Note:** Make sure that your credentials and application settings are initalized before you execute any of these commands. (`npm run manageServices`) It's also recommended to enable developermode while creating your content.
+
+### Understanding the initial content model
+
+When using the predefined content model to create your chatbot content. The types are: ChatOutputText, ChatAttachment, ChatFollowup and ChatActionButton. In the following sections each of these types is described in more detail.
+
+The content type `ChatOutputText` is at the core when creating an answer. Here you define the required text based answer to a user message. You can add answer variations in here. This is also the place to select the dialog states where this answer should be used.
+
+`ChatAttachments` contain all rich content variations your channels support. E.g. images, author information, videos & more. This is the place to define enrichments to your answer. Since those are then referenced to a ChatOutputText you can reuse your ChatAttachment in multiple answers.
+
+`ChatFollowups` are used to defined dialog triggered special actions. E.g. a ChatFollowup can be used when we want to ask the user for his name, but only the first time the user interacts with the bot. The contentstructure is the same as for a ChatOutputText.
+
+`ChatActionButton` define Quick Replies you can add to Slack and Facebook (and potentially your custom developed chatbot). They offer a convenient mechanism to offer your user common answers.
 
 ## Plugins
 
-The following list give a short overview over all used plugins in the wch-conversation-core. This is mostly interessting if you want to create custom plugins to alter the behavior.
+The following list give a short overview over all used plugins in the wch-conversation-core. This is mostly interesting if you want to create custom plugins to alter the behavior.
 
 ### clienttype
 
-**Description:** A simple plugin that identifies the channel based on the incoming user message. Provides it's functionallity additionally as a conversation service middleware. It takes the message and conversationPayload object as given by the [conversationmiddleware][conversationmiddlewareurl] module before method. This plugin can be used as a simple blueprint on how to write your own middleware plugins for the conversationmiddleware plugin. (e.g. if you want to create custom actions that will call your internal service APIs)
+**Description:** A simple plugin that identifies the channel based on the incoming user message. Provides it's functionality additionally as a conversation service middleware. It takes the message and conversationPayload object as given by the [conversationmiddleware][conversationmiddlewareurl] module before method. This plugin can be used as a simple blueprint on how to write your own middleware plugins for the conversationmiddleware plugin. (e.g. if you want to create custom actions that will call your internal service APIs)
 
 **Requires:** `['logging']`
 
