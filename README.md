@@ -5,11 +5,11 @@ In detail, this module contains all necessary server side logic to use the watso
 
 **Note:** This module is part of a tutorial showing how to implement a chatbot solution based on a CMS like [Watson Content Hub][watsoncontenthuburl]. So currently it's discouraged to use this module as is for production use cases without any modifications.
 
-If you fork this repository and want to do end2end tests make sure to run the ```npm run manageCreds``` command. This will setup a local pair of credentials encrypted with your RSA key. If you don't have a RSA key yet follow [these instructions from Github.][generatesshurl]
+If you fork this repository and want to do end2end tests make sure to run the ```npx chatcreds manage -S``` command. This will setup a local pair of credentials encrypted with your RSA key. If you don't have a RSA key yet follow [these instructions from Github.][generatesshurl]
 
 ## Get started
 
-Using this module is pretty easy. The only thing you have to do is put your credentials in place. If you want to run it locally either write your own credentials plugin to fetch your credentials from wherever they are. Or execute the npm command `npm run manageServices` to use the default credentials management. 
+Using this module is pretty easy. The only thing you have to do is put your credentials in place. If you want to run it locally either write your own credentials plugin to fetch your credentials from wherever they are. Or execute the npm command `npx chatcreds manage -S` to use the default credentials management. 
 
 Using the module is as easy as this:
 ```javascript
@@ -78,12 +78,11 @@ Using the module is as easy as this:
 
 ## How to connect your conversation with content from Watson Content Hub
 
-This module is configured to fetch the content shown to users from WCH. This is based on the concept of syncing all `intents`, `entities`, `dialog_nodes` and `actions` from the conversation service to WCH. In order to trigger a sync run `npm run sync`. This should do the job and afterwards you should see your changes in the taxonomy section of WCH. (**Important:** Whenever you make changes in your conversation workspace execute this command again)
+This module is configured to fetch the content shown to users from WCH. This is based on the concept of syncing all `intents`, `entities`, `dialog_nodes` and `actions` from the conversation service to WCH. In order to trigger a sync run `npx chatcreds sync`. This should do the job and afterwards you should see your changes in the taxonomy section of WCH. (**Important:** Whenever you make changes in your conversation workspace execute this command again)
 
-Furthermore it's recommended to use the inital content model and alter the structure afterwards. Import the sample content model through the command `npm run pushWCH`
- we will create & upload the content model to your WCH tentant through the command `npm run pushWCH`. Next we will trigger a syncronization job by running `npm run sync`.
+Furthermore it's recommended to use the inital content model and alter the structure afterwards. Import the sample content model through the command `npx chatcreds push --wch`. Afterwards make sure to run a sync job via `npx chatcreds sync`.
 
-**Note:** Make sure that your credentials and application settings are initalized before you execute any of these commands. (`npm run manageServices`) It's also recommended to enable developermode while creating your content.
+**Note:** Make sure that your credentials and application settings are initalized before you execute any of these commands. (`npx chatcreds manage -S`) It's also recommended to enable developermode while creating your content.
 
 ### Understanding the initial content model
 
