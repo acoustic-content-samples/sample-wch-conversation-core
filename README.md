@@ -7,9 +7,9 @@ In detail this module contains all necessary server side logic to use the watson
 
 If you fork this repository and want to do end2end tests make sure to run the ```npm run manageCreds``` command. This will setup a local pair of credentials encrypted with your RSA key. If you don't have a RSA key yet follow [these instructions from Github.][generatesshurl]
 
-# Get started
+## Get started
 
-Using this module is pretty easy. The only thing you have to do is put your credentials in place. If you want to run it locally either write your own credentials plugin to fetch your credentials from wherever they are. Or execute the npm command `npm run setupCredentials` to use the default credentials management.
+Using this module is pretty easy. The only thing you have to do is put your credentials in place. If you want to run it locally either write your own credentials plugin to fetch your credentials from wherever they are. Or execute the npm command `npm run manageServices` to use the default credentials management. 
 
 Using the module is as easy as this:
 ```javascript
@@ -34,6 +34,9 @@ Using the module is as easy as this:
        "encrypted": true,
        "pathPrivKey": "C:\\Users\\SvenSterbling\\.ssh\\id_rsa"
       }
+     },
+     "wchService": {
+       "enabled": true
      },
      "conversationMiddleware": {
       "config": [
@@ -73,11 +76,17 @@ Using the module is as easy as this:
   });
 ```
 
-# Plugins
+## How to connect your conversation with content from Watson Content Hub
+
+Before you can create content for your chatbot you first have to follow a few steps to get started. First we will create & upload the content model to your WCH tentant through the command `npm run pushWCH`. Next we will trigger a syncronization job by running `npm run sync`. Whenever you make changes to your conversation just execute this command again.
+
+**Note:** Make sure that your credentials and application settings are initalized before you execute the commands. (`npm run manageServices`) It's also recommended to enable developermode while creating your content.
+
+## Plugins
 
 The following list give a short overview over all used plugins in the wch-conversation-core. This is mostly interessting if you want to create custom plugins to alter the behavior.
 
-## clienttype
+### clienttype
 
 **Description:** A simple plugin that identifies the channel based on the incoming user message. Provides it's functionallity additionally as a conversation service middleware. It takes the message and conversationPayload object as given by the [conversationmiddleware][conversationmiddlewareurl] module before method. This plugin can be used as a simple blueprint on how to write your own middleware plugins for the conversationmiddleware plugin. (e.g. if you want to create custom actions that will call your internal service APIs)
 
@@ -95,7 +104,7 @@ The following list give a short overview over all used plugins in the wch-conver
   });
 ```
 
-## conversation
+### conversation
 
 **Description:** Watson Conversation Plugin. Wraps the [watson-developer-cloud module][watsoncloudconversationurl] for ease of use inside of the chatbot core service. The plugin provides a locale specific map of conversation service instances to the correct conversation service instance. Fetches the credentials from the env plugin.
 
@@ -129,7 +138,7 @@ The following list give a short overview over all used plugins in the wch-conver
   conversation.get('de-DE').conversation.uploadWorkspace(...);
 ```
 
-## conversationmiddleware
+### conversationmiddleware
 
 **Description:** Plugin that wraps the [Botkit Conversation Middleware][botkitconversationmiddlewareurl]. As part of this wrapper implementation you can plugin your own middleware where you can plugin custom actions before and after the call made against the conversation server. In order to reguster your middleware create a plugin which provides a before and/or after method and ends on the name 'Middleware' (e.g. clientTypeMiddleware). 
 
@@ -149,7 +158,7 @@ The following list give a short overview over all used plugins in the wch-conver
   });
 ```
 
-## credentials
+### credentials
 
 **Description:** Local credentials plugin. Stores and retrieves the credentials required for all external services used. The current format is based on the bluemix service credentials. The file can optionally be encrypted with your local RSA private key for increased security.
 
@@ -174,7 +183,7 @@ The following list give a short overview over all used plugins in the wch-conver
   credentials.store({credentials: appCredentials});
 ```
 
-## developeractions
+### developeractions
 
 **Description:** Provides a conversationmiddleware plugin. Checks for the wchsync intent and triggers a synchronization between WCS and WCH.
 
@@ -185,7 +194,7 @@ The following list give a short overview over all used plugins in the wch-conver
 **Parameters:**<br/>
 ***modeDev*** - If modeDev is true the synchronization will be triggered. Otherwise the synchronization is disabled.
 
-## env
+### env
 
 **Description:** Wrapper plugin around the [cfenv module][cfenvurl]. Provides the bluemix credentials for all external services used. While running locally we fetch the credentials through the credentials plugin. When running on bluemixthe credentials are managed through bluemix services.
 
@@ -208,7 +217,7 @@ The following list give a short overview over all used plugins in the wch-conver
   });
 ```
 
-## geolocation
+### geolocation
 
 **Description:** Wrapper plugin around the [Google Geolocation API][geolocationurl]. Provides location based services for the conversationmiddleware plugin. If the text contains a flag to set a geolocation the user input text is send to the geolocation api to retrieve the lat and long values.
 
@@ -220,7 +229,7 @@ The following list give a short overview over all used plugins in the wch-conver
 **serviceName** - Name of the bluemix conversation service instance. The module fetches the credentials for authentication based on the given service name. The default name is *wch-conversation*.<br/>
 **enabled** - If true the geolocation service is enabled. Otherwise no geolocation will be set.<br/>
 
-## languagetranslator
+### languagetranslator
 
 **Description:** Wrapper plugin around the [Watson Language Translator][languagetranslationurl]. If the message does not contain any language information this conversationmiddleware plugin will infer the language based on the user input text. This information is stored in the conversation context. If the identified lanugage is not supported we will use the fallback language.
 
@@ -233,7 +242,7 @@ The following list give a short overview over all used plugins in the wch-conver
 **supportedLanguages** - All supported output languages.<br/>
 **defaultLanguage** - The default language in case the user sets an unsupported language or we have no information at all about the language of the user.<br/>
 
-## logging
+### logging
 
 **Description:** Simple logging module based on [debug][debugurl].
 
@@ -253,7 +262,7 @@ The following list give a short overview over all used plugins in the wch-conver
   logger.debug('Some debug message with %o', param);
 ```
 
-## templating
+### templating
 
 **Description:** Templating engine based on [handlebars][handlebarsurl]. It uses the complete search result and parses it with the watsonData.
 
@@ -269,7 +278,7 @@ The following list give a short overview over all used plugins in the wch-conver
   templating.parseJSON(watsonData, searchResult);
 ```
 
-## toneanalyzer
+### toneanalyzer
 
 **Description:** Wrapper to use the [Watson Tone Analyzer][watsoncloudtoneanalyzernurl] inside of the conversationmiddleware. The result is stored in the conversation context before it's called.
 
@@ -289,7 +298,7 @@ The following list give a short overview over all used plugins in the wch-conver
   });
 ```
 
-## wch
+### wch
 
 **Description:** [Sample wch node wrapper][wchconnectorurl].
 
@@ -306,7 +315,7 @@ The following list give a short overview over all used plugins in the wch-conver
   // Check out the samples over there
 ```
 
-## wchconversation
+### wchconversation
 
 **Description:** Plugin which takes a response from the Watson Conversation Service and returns a search result from WCH with the best matching answer/content. Based on the input a SOLR search query is created. Based on that it processes the found results, all attachments and location specific responses.
 
@@ -327,7 +336,7 @@ The following list give a short overview over all used plugins in the wch-conver
     });
 ```
 
-## wchsync
+### wchsync
 
 **Description:** Synchronization plugin of the Watson Conversation Service Structure to Watson Content Hub. The structure of the Conversation Service is represented as multiple taxonomies in WCH. (A taxonomy per concept) Currently the synchronization is one way only. (WCS --> WCH)
 
