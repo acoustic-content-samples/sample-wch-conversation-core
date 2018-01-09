@@ -38,6 +38,9 @@ const appSettings = {
      "pathPrivKey": "C:\\Users\\SvenSterbling\\.ssh\\id_rsa"
     }
    },
+   "wchService": {
+     "enabled": true
+   },
    "conversationMiddleware": {
     "config": [
      {

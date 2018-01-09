@@ -13,7 +13,8 @@
     "manageChannels": ".bin/credentials manage -C",
     "manageServices": ".bin/credentials manage -S",
     "pushWCH": ".bin/credentials push --wch",
-    "pushWCS": ".bin/credentials push --wcs"
+    "pushWCS": ".bin/credentials push --wcs",
+    "sync": ".bin/credentials sync"
   },
   "keywords": [
     "core",

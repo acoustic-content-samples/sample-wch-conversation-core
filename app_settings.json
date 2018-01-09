@@ -18,19 +18,20 @@
  },
  "channels": {
   "alexa": {
-   "enabled": false
+   "enabled": false,
+   "debug": false
   },
   "fb": {
    "enabled": false,
-   "chatpersona": "mrwatson",
-   "debug": false
+   "debug": false,
+   "chatpersona": "mrwatson"
   },
   "slack": {
    "enabled": false,
+   "chatpersona": "mrwatson",
    "startApp": false,
    "startTestBot": false,
    "debug": false,
-   "chatpersona": "mrwatson",
    "chatboticons": {
     "mrwatson": "https://my6.digitalexperience.ibm.com/8f032d79-a358-4825-af1b-d6cc169692c6/dxdam/8c/8c290073-6365-4400-8dce-40e286667e50/MrWatson.PNG",
     "profcontent": "https://my6.digitalexperience.ibm.com/8f032d79-a358-4825-af1b-d6cc169692c6/dxdam/ae/ae0a2253-d8e2-48e0-92d3-481cc8468ed2/ProfContent.PNG",
@@ -38,11 +39,11 @@
    }
   },
   "rasp": {
-   "enabled": true,
+   "enabled": false,
    "debug": false
   },
   "rest": {
-   "enabled": true,
+   "enabled": false,
    "debug": false
   }
  },
@@ -55,23 +56,24 @@
  "geolocationService": {
   "enabled": false
  },
- "wchService": {
-  "enabled": true
- },
  "dbService": {
   "enabled": false
  },
  "conversationMiddleware": {
-  "serviceName": "wch-conversation",
   "config": [
    {
     "workspaceId": "9db75ce4-a059-4f53-988d-de239eed10a0",
     "locale": "en"
    },
    {
-    "workspaceId": "9db75ce4-a059-4f53-988d-de239eed10a0",
+    "workspaceId": "d361c2fc-cfb7-40a1-a46a-a218b4e62136",
     "locale": "de"
    }
   ]
+ },
+ "wchService": {
+  "enabled": true,
+  "caching": false,
+  "ttl": 300
  }
 }
