@@ -9,12 +9,12 @@
   "scripts": {
     "test": "mocha lib/**/**.spec.js",
     "eslint": "gulp eslint",
-    "manageCreds": ".bin/credentials manage -A",
-    "manageChannels": ".bin/credentials manage -C",
-    "manageServices": ".bin/credentials manage -S",
-    "pushWCH": ".bin/credentials push --wch",
-    "pushWCS": ".bin/credentials push --wcs",
-    "sync": ".bin/credentials sync"
+    "manageCreds": "node .bin/credentials manage -A",
+    "manageChannels": "node .bin/credentials manage -C",
+    "manageServices": "node .bin/credentials manage -S",
+    "pushWCH": "node .bin/credentials push --wch",
+    "pushWCS": "node .bin/credentials push --wcs",
+    "sync": "node .bin/credentials sync"
   },
   "keywords": [
     "core",
