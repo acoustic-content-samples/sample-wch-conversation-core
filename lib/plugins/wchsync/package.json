@@ -1,5 +1,5 @@
 {
-    "name": "wchsync",
+    "name": "@coreplugin/wchsync",
     "version": "0.0.1",
     "main": "wchsync.js",
     "private": true,

@@ -1,5 +1,5 @@
 {
-    "name": "templating",
+    "name": "@coreplugin/templating",
     "version": "0.0.1",
     "main": "templating.js",
     "private": true,

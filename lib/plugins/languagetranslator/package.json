@@ -1,5 +1,5 @@
 {
-    "name": "languagetranslator",
+    "name": "@coreplugin/languagetranslator",
     "version": "0.0.1",
     "main": "languagetranslator.js",
     "private": true,

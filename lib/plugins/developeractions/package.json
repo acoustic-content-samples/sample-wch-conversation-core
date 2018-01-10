@@ -1,5 +1,5 @@
 {
-    "name": "developeractions",
+    "name": "@coreplugin/developeractions",
     "version": "0.0.1",
     "main": "developeractions.js",
     "private": true,

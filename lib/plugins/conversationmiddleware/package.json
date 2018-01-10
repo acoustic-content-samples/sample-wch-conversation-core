@@ -1,5 +1,5 @@
 {
-    "name": "conversationmiddleware",
+    "name": "@coreplugin/conversationmiddleware",
     "version": "0.0.1",
     "main": "conversationmiddleware.js",
     "private": true,

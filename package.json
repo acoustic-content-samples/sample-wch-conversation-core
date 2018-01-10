@@ -36,7 +36,22 @@
     "node-cache": "^4.1.1",
     "node-rsa": "^0.4.2",
     "sample-wch-node-connector": "^0.7.2",
-    "watson-developer-cloud": "^2.42.0"
+    "watson-developer-cloud": "^2.42.0",
+    "@coreplugin/logging": "file:./lib/plugins/logging",
+    "@coreplugin/templating": "file:./lib/plugins/templating",
+    "@coreplugin/env": "file:./lib/plugins/env",
+    "@coreplugin/geolocation": "file:./lib/plugins/geolocation",
+    "@coreplugin/languagetranslator": "file:./lib/plugins/languagetranslator",
+    "@coreplugin/toneanalyzer": "file:./lib/plugins/toneanalyzer",
+    "@coreplugin/clienttype": "file:./lib/plugins/clienttype",
+    "@coreplugin/wch": "file:./lib/plugins/wch",
+    "@coreplugin/wchconversation": "file:./lib/plugins/wchconversation",
+    "@coreplugin/wchsync": "file:./lib/plugins/wchsync",
+    "@coreplugin/developeractions": "file:./lib/plugins/developeractions",
+    "@coreplugin/conversation": "file:./lib/plugins/conversation",
+    "@coreplugin/conversationmiddleware": "file:./lib/plugins/conversationmiddleware",
+    "@coreplugin/credentialsbluemix": "file:./lib/plugins/credentialsbluemix",
+    "@coreplugin/credentials": "file:./lib/plugins/credentials"
   },
   "devDependencies": {
     "chai": "^4.1.2",
