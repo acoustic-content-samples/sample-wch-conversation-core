@@ -2,7 +2,6 @@
     "name": "@coreplugin/wchconversation",
     "version": "0.0.1",
     "main": "wchconversation.js",
-    "private": true,
     "dependencies": {
       "node-cache": "^4.1.1"
     },

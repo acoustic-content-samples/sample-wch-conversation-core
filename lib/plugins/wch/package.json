@@ -2,7 +2,6 @@
     "name": "@coreplugin/wch",
     "version": "0.0.1",
     "main": "wch.js",
-    "private": true,
     "dependencies": {
       "sample-wch-node-connector": "^0.7.2"
     },
