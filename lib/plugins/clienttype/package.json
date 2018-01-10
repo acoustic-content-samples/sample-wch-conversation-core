@@ -1,6 +1,6 @@
 {
     "name": "@coreplugin/clienttype",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "main": "clienttype.js",
     "private": true,
     "dependencies": {},
