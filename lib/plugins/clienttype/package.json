@@ -2,7 +2,7 @@
     "name": "@coreplugin/clienttype",
     "version": "0.0.2",
     "main": "clienttype.js",
-    "private": true,
+    "private": false,
     "dependencies": {},
     "plugin": {
         "consumes": ["logging"],
