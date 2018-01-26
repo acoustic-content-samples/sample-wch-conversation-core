@@ -1,4 +1,5 @@
 # WCH Conversation Core
+
 This package contains the essential functionality to create a chatbot based on the combination of the [Watson Conversation Service][watsonconversationurl] and [Watson Content Hub][watsoncontenthuburl]. Each essential part is available as a plugin. The plugin structure is based on the [architect framework][architecturl].
 
 In detail, this module contains all necessary server side logic to use the watson conversation service with any channel and framework you want. Additionally it provides an easy configuration to fetch the response the users sees from Watson Content Hub. This allows you to manage the responses across all channels in an easy to use User Interface provided by Watson Content Hub. You're not limited to text answers only. There is no limitation on rich media like images, pdfs, files, author information, ...
@@ -12,6 +13,7 @@ If you fork this repository and want to do end2end tests make sure to run the ``
 Using this module is pretty easy. The only thing you have to do is put your credentials in place. If you want to run it locally either write your own credentials plugin to fetch your credentials from wherever they are. Or execute the npm command `npx chatcreds manage -S` to use the default credentials management. 
 
 Using the module is as easy as this:
+
 ```javascript
   const {promisify} = require('util');
   const {dirname} = require('path');
@@ -96,6 +98,10 @@ The content type `ChatOutputText` is at the core when creating an answer. Here y
 
 `ChatActionButton` define Quick Replies you can add to Slack and Facebook (and potentially your custom developed chatbot). They offer a convenient mechanism to offer your user common answers.
 
+### Deploying to Bluemix
+
+If you want to upload your application to bluemix you can use `npx chatcreds push -b` to automatically create and `npx chatcreds push -bU` to update all custom credentials (for WCH, Geolocation API, ...) in Bluemix. Make sure to reference the custom created services in your manifest.yml.
+
 ## Plugins
 
 The following list give a short overview over all used plugins in the wch-conversation-core. This is mostly interesting if you want to create custom plugins to alter the behavior.
@@ -111,6 +117,7 @@ The following list give a short overview over all used plugins in the wch-conver
 **Architect Configuration Options:** None
 
 **Methods:**
+
 ```javascript
   clientType.identify(message, conversationPayload)
   .then(clientType => {
@@ -131,6 +138,7 @@ The following list give a short overview over all used plugins in the wch-conver
 ***workspaceConfigs*** - Locale specific mapping from a locale to a Watson Conversation Service Workspace. See app_settings.json for a sample. 
 
 **Methods:**
+
 ```javascript
   conversation.get('de').getWorkspace()
   .then(workspace => {
@@ -165,6 +173,7 @@ The following list give a short overview over all used plugins in the wch-conver
 ***middlewareConfigs*** - Locale specific mapping from a locale to a Watson Conversation Service Workspace. See app_settings.json for a sample. 
 
 **Methods:**
+
 ```javascript
   conversationMiddleware.get(locale).interpret(bot, message, function () {
     // message.watsonData contains the conversation service response
@@ -188,6 +197,7 @@ The following list give a short overview over all used plugins in the wch-conver
 ***modifiable*** - Option to enable or disable the save/update capabilities of this plugin.<br/> 
 
 **Methods:**
+
 ```javascript
   credentials.get({credsPath: resolve(options.credsPath)})
   .then(credentials => {
@@ -220,6 +230,7 @@ The following list give a short overview over all used plugins in the wch-conver
 ***credsPath*** - Relative or absolute path to the credentials file where all bluemix credentials are located. Not used when running on bluemix.
 
 **Methods:**
+
 ```javascript
   let conversationCreds = env.getService('wch-conversation');
   let conversation = new ConversationV1({
@@ -269,6 +280,7 @@ The following list give a short overview over all used plugins in the wch-conver
 ***toFile*** - If set to true the debug log will also be stored in a file.
 
 **Methods:**
+
 ```javascript
   const logger = logging('geolocation');
   logger.methodEntry('setup', options, imports);
@@ -288,6 +300,7 @@ The following list give a short overview over all used plugins in the wch-conver
 -
 
 **Methods:**
+
 ```javascript
   templating.parseJSON(watsonData, searchResult);
 ```
@@ -305,6 +318,7 @@ The following list give a short overview over all used plugins in the wch-conver
 **enabled** -If true the geolocation service is enabled. Otherwise no geolocation will be set.<br/>
 
 **Methods:**
+
 ```javascript
   toneanalyzer.identify(message, conversationPayload)
   .then(identifiedTone => {
@@ -324,6 +338,7 @@ The following list give a short overview over all used plugins in the wch-conver
 **serviceName** - Name of the bluemix tone analyzer service instance. The module fetches the credentials for authentication based on the given service name. The default name is *wch_config*.<br/>
 
 **Methods:**
+
 ```javascript
   // Full access to the sample-wch-node-wrapper
   // Check out the samples over there
@@ -342,6 +357,7 @@ The following list give a short overview over all used plugins in the wch-conver
 **ttl** - Time until an element is removed from cache. In seconds. Default is 300 seconds (5 minutes).<br/>
 
 **Methods:**
+
 ```javascript
   wchconversation.getWchConversationResponses(watsonData)
     .then(({locationResp, conversationResp, followupResp}) => {
@@ -362,6 +378,7 @@ The following list give a short overview over all used plugins in the wch-conver
 **mainWorkspace** - Locale of the main workspace that will be used for the synchronization. Normally should be your default language.<br/>
 
 **Methods:**
+
 ```javascript
   wchsync.push({fromSys:'WCS', toSys:'WCH'})
   .then(result => {
