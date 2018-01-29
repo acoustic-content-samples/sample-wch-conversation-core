@@ -12,7 +12,7 @@
   "credentialsStore": {
    "path": "./dch_vcap.json",
    "encrypted": true,
-   "pathPrivKey": "/Users/sterbling@de.ibm.com/id_rsa"
+   "pathPrivKey": "/Users/sterbling@de.ibm.com/.ssh/id_rsa"
   },
   "debugToFile": false
  },

@@ -8,9 +8,18 @@ In detail, this module contains all necessary server side logic to use the watso
 
 If you fork this repository and want to do end2end tests make sure to run the ```npx chatcreds manage -S``` command. This will setup a local pair of credentials encrypted with your RSA key. If you don't have a RSA key yet follow [these instructions from Github.][generatesshurl]
 
+## Before you begin
+
+* Create a Bluemix account
+  * [Sign up](https://console.ng.bluemix.net/registration/?target=/catalog/%3fcategory=watson) in Bluemix, or use an existing account. Your account must have available space for at least 1 service.
+* Make sure that you have the following prerequisites installed:
+  * The [Node.js](https://nodejs.org/#download) runtime, including the [npm][npm_link] package manager
+
+    Note: Ensure that you Node version is up to date
+
 ## Get started
 
-Using this module is pretty easy. The only thing you have to do is put your credentials in place. If you want to run it locally either write your own credentials plugin to fetch your credentials from wherever they are. Or execute the npm command `npx chatcreds manage -S` to use the default credentials management. 
+Using this module is pretty easy. The only thing you have to do is put your credentials in place. If you want to run it locally either write your own credentials plugin to fetch your credentials from wherever they are. Or execute the npm command `npx chatcreds manage -S` to use the default credentials management.
 
 Using the module is as easy as this:
 
@@ -25,16 +34,10 @@ Using the module is as easy as this:
   const appSettings = {
     "generalSettings": {
       "defaultLanguage": "en",
-      "supportedLanguages": [
-       "de",
-       "en"
-      ],
-      "developermode": true,
-      "confLvl": "0.7",
+      "supportedLanguages": ["en"],
       "credentialsStore": {
        "path": "./dch_vcap.json",
-       "encrypted": true,
-       "pathPrivKey": "C:\\Users\\SvenSterbling\\.ssh\\id_rsa"
+       "encrypted": false
       }
      },
      "wchService": {
@@ -90,13 +93,13 @@ Furthermore it's recommended to use the inital content model and alter the struc
 
 When using the predefined content model to create your chatbot content. The types are: ChatOutputText, ChatAttachment, ChatFollowup and ChatActionButton. In the following sections each of these types is described in more detail.
 
-The content type `ChatOutputText` is at the core when creating an answer. Here you define the required text based answer to a user message. You can add answer variations in here. This is also the place to select the dialog states where this answer should be used.
+Every conversation service response is defined through the content type `ChatOutputText`. This means that every content item based on `ChatOutputText` references to one or more conversation states as defined in your Conversation Service Workspace. Furthermore it defines the default answer text. Through the addition of attachments you can select `ChatAttachments` to enrich the answer with rich content like images.
 
-`ChatAttachments` contain all rich content variations your channels support. E.g. images, author information, videos & more. This is the place to define enrichments to your answer. Since those are then referenced to a ChatOutputText you can reuse your ChatAttachment in multiple answers.
+`ChatAttachments` contain all additional information to enrich the answer for an chatbot. This can include elements like images, videos, files, author information and more. Through the separation you can reuse `ChatAttachments` across many chatbot answers.
 
-`ChatFollowups` are used to defined dialog triggered special actions. E.g. a ChatFollowup can be used when we want to ask the user for his name, but only the first time the user interacts with the bot. The contentstructure is the same as for a ChatOutputText.
+`ChatFollowups` are used to defined dialog triggered special actions. E.g. a ChatFollowup can be used when we want to ask the user for his name, but only the first time the user interacts with the bot. The contentstructure is the same as for a `ChatOutputText`.
 
-`ChatActionButton` define Quick Replies you can add to Slack and Facebook (and potentially your custom developed chatbot). They offer a convenient mechanism to offer your user common answers.
+`ChatActionButton` define Quick Replies you can add to Slack and Facebook (and potentially your custom developed chatbot). They offer a convenient mechanism to offer your user common actions.
 
 ### Deploying to Bluemix
 
@@ -105,6 +108,8 @@ If you want to upload your application to bluemix you can use `npx chatcreds pus
 ## Plugins
 
 The following list give a short overview over all used plugins in the wch-conversation-core. This is mostly interesting if you want to create custom plugins to alter the behavior.
+
+![Conversation Core Component Diagram](/readme_images/compdig.jpg)
 
 ### clienttype
 
@@ -400,3 +405,6 @@ The following list give a short overview over all used plugins in the wch-conver
 [debugurl]:https://github.com/visionmedia/debug
 [handlebarsurl]:http://handlebarsjs.com/
 [wchconnectorurl]:https://github.com/ibm-wch/sample-wch-node-wrapper
+[node_link]: (http://nodejs.org/)
+[npm_link]: (https://www.npmjs.com/)
+[sign_up]: bluemix.net/registration
