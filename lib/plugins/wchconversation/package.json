@@ -1,5 +1,5 @@
 {
-    "name": "@coreplugin/wchconversation",
+    "name": "wchconversation",
     "version": "0.0.1",
     "main": "wchconversation.js",
     "dependencies": {

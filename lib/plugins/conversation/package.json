@@ -1,5 +1,5 @@
 {
-    "name": "@coreplugin/conversation",
+    "name": "conversation",
     "version": "0.0.1",
     "main": "conversation.js",
     "dependencies": {

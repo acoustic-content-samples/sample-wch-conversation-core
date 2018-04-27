@@ -1,5 +1,5 @@
 {
-    "name": "@coreplugin/toneanalyzer",
+    "name": "toneanalyzer",
     "version": "0.0.1",
     "main": "toneanalyzer.js",
     "dependencies": {

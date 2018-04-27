@@ -1,5 +1,5 @@
 {
-    "name": "@coreplugin/templating",
+    "name": "templating",
     "version": "0.0.1",
     "main": "templating.js",
     "dependencies": {

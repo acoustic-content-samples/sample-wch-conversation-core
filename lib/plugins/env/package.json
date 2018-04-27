@@ -1,5 +1,5 @@
 {
-    "name": "@coreplugin/env",
+    "name": "env",
     "version": "0.0.1",
     "main": "env.js",
     "dependencies": {
