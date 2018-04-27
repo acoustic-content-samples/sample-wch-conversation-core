@@ -46,24 +46,7 @@
     "chai-as-promised": "^7.1.1",
     "co-mocha": "^1.2.0",
     "mocha": "^4.0.0"
-  },
-  "optionalDependencies": {
-    "@coreplugin/logging": "file:lib/plugins/logging",
-    "@coreplugin/templating": "file:lib/plugins/templating",
-    "@coreplugin/env": "file:lib/plugins/env",
-    "@coreplugin/geolocation": "file:lib/plugins/geolocation",
-    "@coreplugin/languagetranslator": "file:lib/plugins/languagetranslator",
-    "@coreplugin/toneanalyzer": "file:lib/plugins/toneanalyzer",
-    "@coreplugin/clienttype": "file:lib/plugins/clienttype",
-    "@coreplugin/wch": "file:lib/plugins/wch",
-    "@coreplugin/wchconversation": "file:lib/plugins/wchconversation",
-    "@coreplugin/wchsync": "file:lib/plugins/wchsync",
-    "@coreplugin/developeractions": "file:lib/plugins/developeractions",
-    "@coreplugin/conversation": "file:lib/plugins/conversation",
-    "@coreplugin/conversationmiddleware": "file:lib/plugins/conversationmiddleware",
-    "@coreplugin/credentialsbluemix": "file:lib/plugins/credentialsbluemix",
-    "@coreplugin/credentials": "file:lib/plugins/credentials"
-  },
+  }
   "repository": {
     "git": "https://github.com/ibm-wch/sample-wch-conversation-core"
   },
