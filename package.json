@@ -38,6 +38,7 @@
     "node-rsa": "^1.0.0",
     "prompt": "^1.0.0",
     "sample-wch-node-connector": "^0.7.8",
+    "untildify": "^3.0.3",
     "watson-developer-cloud": "^3.4.1",
     "wchtools-cli": "^2.6.2"
   },
