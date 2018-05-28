@@ -1,5 +1,5 @@
 {
-  "name": "@coreplugin/logging",
+  "name": "logging",
   "version": "0.0.2",
   "main": "logging.js",
   "dependencies": {

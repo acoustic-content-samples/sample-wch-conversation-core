@@ -1,5 +1,5 @@
 {
-    "name": "@coreplugin/credentialsbluemix",
+    "name": "credentialsbluemix",
     "version": "0.0.1",
     "main": "credentials.js",
     "dependencies": {},

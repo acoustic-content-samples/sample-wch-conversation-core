@@ -1,0 +1,10 @@
+{
+  "name": "agendaactions",
+  "version": "0.0.1",
+  "main": "agendaactions.js",
+  "dependencies": {},
+  "plugin": {
+      "consumes": ["logging", "wch"],
+      "provides": ["agendaactions", "agendaactionsMiddleware"]
+  }
+}
