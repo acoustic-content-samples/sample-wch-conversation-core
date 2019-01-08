@@ -1,6 +1,6 @@
 {
   "name": "wch-conversation-core",
-  "version": "0.7.11",
+  "version": "0.7.13",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -27,7 +27,7 @@
   "author": "Sven Sterbling <sterbling@de.ibm.com>",
   "license": "Apache-2.0",
   "dependencies": {
-    "@google/maps": "^0.4.6",
+    "@google/maps": "^0.5.5",
     "architect": "^0.1.13",
     "botkit-middleware-watson": "^1.7.1",
     "cfenv": "^1.1.0",
@@ -41,8 +41,8 @@
     "sample-wch-node-connector": "^0.7.8",
     "sanitize-html": "^1.18.2",
     "untildify": "^3.0.3",
-    "watson-developer-cloud": "^3.4.1",
-    "wchtools-cli": "^2.6.2"
+    "watson-developer-cloud": "^3.15.0",
+    "wchtools-cli": "^4.1.5"
   },
   "devDependencies": {
     "chai": "^4.1.2",
