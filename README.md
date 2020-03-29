@@ -1,6 +1,6 @@
-# WCH Conversation Core
+# Acoustic Content Conversation Core
 
-This package contains the essential functionality to create a chatbot based on the combination of the [Watson Conversation Service][watsonconversationurl] and [Watson Content Hub][watsoncontenthuburl]. Each essential part is available as a plugin. The plugin structure is based on the [architect framework][architecturl].
+This package contains the essential functionality to create a chatbot based on the combination of the [Watson Conversation Service][watsonconversationurl] and Acoustic Content (formerly Watson Content Hub). Each essential part is available as a plugin. The plugin structure is based on the [architect framework][architecturl].
 
 In detail, this module contains all necessary server side logic to use the watson conversation service with any channel and framework you want. Additionally it provides an easy configuration to fetch the response the users sees from Watson Content Hub. This allows you to manage the responses across all channels in an easy to use User Interface provided by Watson Content Hub. You're not limited to text answers only. There is no limitation on rich media like images, pdfs, files, author information, ...
 
