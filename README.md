@@ -4,7 +4,7 @@ This package contains the essential functionality to create a chatbot based on t
 
 In detail, this module contains all necessary server side logic to use the watson conversation service with any channel and framework you want. Additionally it provides an easy configuration to fetch the response the users sees from Watson Content Hub. This allows you to manage the responses across all channels in an easy to use User Interface provided by Watson Content Hub. You're not limited to text answers only. There is no limitation on rich media like images, pdfs, files, author information, ...
 
-**Note:** This module is part of a tutorial showing how to implement a chatbot solution based on a CMS like [Watson Content Hub][watsoncontenthuburl]. So currently it's discouraged to use this module as is for production use cases without any modifications.
+**Note:** This module is part of a tutorial showing how to implement a chatbot solution based on a CMS like Acoustic Content. So currently it's discouraged to use this module as is for production use cases without any modifications.
 
 If you fork this repository and want to do end2end tests make sure to run the ```npx chatcreds manage -S``` command. This will setup a local pair of credentials encrypted with your RSA key. If you don't have a RSA key yet follow [these instructions from Github.][generatesshurl]
 
