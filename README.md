@@ -2,7 +2,7 @@
 
 This package contains the essential functionality to create a chatbot based on the combination of the [Watson Conversation Service][watsonconversationurl] and Acoustic Content (formerly Watson Content Hub). Each essential part is available as a plugin. The plugin structure is based on the [architect framework][architecturl].
 
-In detail, this module contains all necessary server side logic to use the watson conversation service with any channel and framework you want. Additionally it provides an easy configuration to fetch the response the users sees from Watson Content Hub. This allows you to manage the responses across all channels in an easy to use User Interface provided by Watson Content Hub. You're not limited to text answers only. There is no limitation on rich media like images, pdfs, files, author information, ...
+In detail, this module contains all necessary server side logic to use the watson conversation service with any channel and framework you want. Additionally it provides an easy configuration to fetch the response the users sees from Acoustic Content. This allows you to manage the responses across all channels in an easy to use User Interface provided by Acoustic Content. You're not limited to text answers only. There is no limitation on rich media like images, pdfs, files, author information, ...
 
 **Note:** This module is part of a tutorial showing how to implement a chatbot solution based on a CMS like Acoustic Content. So currently it's discouraged to use this module as is for production use cases without any modifications.
 
@@ -63,7 +63,7 @@ Using the module is as easy as this:
   .then(wchcore => {
     // Access to your Watson Conversation Service Instances (This is the general approach to access any defined plugin)
     const conversation = wchcore.getService('conversation');
-    // Access to Watson Content Hub
+    // Access to Acoustic Content
     const wchconversation =  wchcore.getService('wchconversation');
 
     conversation.get('en').sendMessage({message: 'Hello', context: {}})
@@ -81,7 +81,7 @@ Using the module is as easy as this:
   });
 ```
 
-## How to connect your conversation with content from Watson Content Hub
+## How to connect your conversation with content from Acoustic Content
 
 This module is configured to fetch the content shown to users from WCH. This is based on the concept of syncing all `intents`, `entities`, `dialog_nodes` and `actions` from the conversation service to WCH. In order to trigger a sync run `npx chatcreds sync`. This should do the job and afterwards you should see your changes in the taxonomy section of WCH. (**Important:** Whenever you make changes in your conversation workspace execute this command again)
 
@@ -392,7 +392,6 @@ The following list give a short overview over all used plugins in the wch-conver
 ```
 
 [watsonconversationurl]: https://www.ibm.com/watson/services/conversation/
-[watsoncontenthuburl]: https://www.ibm.com/de-de/marketplace/cloud-cms-solution
 [architecturl]: https://github.com/c9/architect
 [conversationmiddlewareurl]: https://github.com/watson-developer-cloud/botkit-middleware
 [watsoncloudconversationurl]: https://github.com/watson-developer-cloud/node-sdk/#conversation
